@@ -1,0 +1,1213 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+        Interactive Sankey Diagram for CFDE Program DCCs' Digital Assets
+    </title>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div>
+        <script type="text/javascript">
+            window.PlotlyConfig = { MathJaxConfig: "local" };
+        </script>
+        <div id="cd5db974-d0ce-4009-b514-76faa8c620b1" class="plotly-graph-div" style="height: 900px; width: 80%"></div>
+        <script type="text/javascript">
+            const csvString = `CFDE Programs,Data Types,Descriptive tags,Suggested Repositories
+4DN,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+4DN,data:2887 nucleic acid sequence record,Omics data: Genomic,dbSNP
+4DN,data:2887 nucleic acid sequence record,Omics data: Genomic,dbVar
+4DN,data:2887 nucleic acid sequence record,Omics data: Genomic,ClinVar
+4DN,data:2887 nucleic acid sequence record,Omics data: Genomic,GenBank
+4DN,data:2887 nucleic acid sequence record,Omics data: Genomic,GEO
+4DN,data:2887 nucleic acid sequence record,Omics data: Genomic,AnVIL
+4DN,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+4DN,data:0863 sequence alignment,Omics data: Proteomic,dbGaP
+4DN,data:0863 sequence alignment,Omics data: Proteomic,GEO
+4DN,data:0863 sequence alignment,Omics data: Proteomic,AnVIL
+4DN,data:0863 sequence alignment,Omics data: Proteomic,Generalist repositories
+4DN,data:0863 sequence alignment,Omics data: Genomic,dbGaP
+4DN,data:0863 sequence alignment,Omics data: Genomic,dbSNP
+4DN,data:0863 sequence alignment,Omics data: Genomic,dbVar
+4DN,data:0863 sequence alignment,Omics data: Genomic,ClinVar
+4DN,data:0863 sequence alignment,Omics data: Genomic,GenBank
+4DN,data:0863 sequence alignment,Omics data: Genomic,GEO
+4DN,data:0863 sequence alignment,Omics data: Genomic,AnVIL
+4DN,data:0863 sequence alignment,Omics data: Genomic,Generalist repositories
+4DN,data:2082 matrix,Computational Processed data,dbGaP
+4DN,data:2082 matrix,Computational Processed data,GenBank
+4DN,data:2082 matrix,Computational Processed data,GEO
+4DN,data:2082 matrix,Computational Processed data,AnVIL
+4DN,data:2082 matrix,Computational Processed data,Generalist repositories
+4DN,data:2968 image,Imaging Data,dbGaP
+4DN,data:2968 image,Imaging Data,GEO
+4DN,data:2968 image,Imaging Data,AnVIL
+4DN,data:2968 image,Imaging Data,Generalist repositories
+4DN,data:3002 annotation track,Omics data: Metabolomic,dbGaP
+4DN,data:3002 annotation track,Omics data: Metabolomic,GEO
+4DN,data:3002 annotation track,Omics data: Metabolomic,AnVIL
+4DN,data:3002 annotation track,Omics data: Metabolomic,Generalist repositories
+A2CPS,data:2968 image,Imaging Data,AnVIL
+A2CPS,data:2968 image,Imaging Data,SPARC database
+A2CPS,data:2968 image,Imaging Data,BIL
+A2CPS,data:2968 image,Imaging Data,Generalist repositories
+A2CPS,data:0920 genotype/phenotype report,Clinical data,AnVIL
+A2CPS,data:0920 genotype/phenotype report,Clinical data,SPARC database
+A2CPS,data:0920 genotype/phenotype report,Clinical data,BIL
+A2CPS,data:0920 genotype/phenotype report,Clinical data,Generalist repositories
+A2CPS,data:3722 physiology parameter,Clinical data,AnVIL
+A2CPS,data:3722 physiology parameter,Clinical data,SPARC database
+A2CPS,data:3722 physiology parameter,Clinical data,BIL
+A2CPS,data:3722 physiology parameter,Clinical data,Generalist repositories
+A2CPS,data:3495 rna sequence,Omics data: Genomic,AnVIL
+A2CPS,data:3495 rna sequence,Omics data: Genomic,dbGaP
+A2CPS,data:3495 rna sequence,Omics data: Genomic,dbVar
+A2CPS,data:3495 rna sequence,Omics data: Genomic,SPARC database
+A2CPS,data:3495 rna sequence,Omics data: Genomic,BIL
+A2CPS,data:3495 rna sequence,Omics data: Genomic,Generalist repositories
+A2CPS,data:2536 mass spectrometry data,Omics data: Proteomic,AnVIL
+A2CPS,data:2536 mass spectrometry data,Omics data: Proteomic,PeptideAtlas
+A2CPS,data:2536 mass spectrometry data,Omics data: Proteomic,Generalist repositories
+Bridge2AI,data:3861 electronic health record,Clinical data,AnVIL
+Bridge2AI,data:3861 electronic health record,Clinical data,dbGaP
+Bridge2AI,data:3861 electronic health record,Clinical data,PhysioNet
+Bridge2AI,data:3861 electronic health record,Clinical data,Generalist repositories
+Bridge2AI,data:1622 disease report,Omics data: Genomic,AnVIL
+Bridge2AI,data:1622 disease report,Omics data: Genomic,dbGaP
+Bridge2AI,data:1622 disease report,Omics data: Genomic,PhysioNet
+Bridge2AI,data:1622 disease report,Omics data: Genomic,Generalist repositories
+Bridge2AI,data:0956 data index report,Computational biology data,AnVIL
+Bridge2AI,data:0956 data index report,Computational biology data,dbGaP
+Bridge2AI,data:0956 data index report,Computational biology data,PhysioNet
+Bridge2AI,data:0956 data index report,Computational biology data,Generalist repositories
+Bridge2AI,data:2968 image,Imaging Data,AnVIL
+Bridge2AI,data:2968 image,Imaging Data,dbGaP
+Bridge2AI,data:2968 image,Imaging Data,PhysioNet
+Bridge2AI,data:2968 image,Imaging Data,Generalist repositories
+Bridge2AI,data:3002 annotation track,Omics data: Genomic,AnVIL
+Bridge2AI,data:3002 annotation track,Omics data: Genomic,dbGaP
+Bridge2AI,data:3002 annotation track,Omics data: Genomic,PhysioNet
+Bridge2AI,data:3002 annotation track,Omics data: Genomic,Generalist repositories
+Bridge2AI,data:3669 training material,Others,AnVIL
+Bridge2AI,data:3669 training material,Others,dbGaP
+Bridge2AI,data:3669 training material,Others,PhysioNet
+Bridge2AI,data:3669 training material,Others,Generalist repositories
+ExRNA,data:3495 rna sequence,Omics data: Genomic,GEO
+ExRNA,data:3495 rna sequence,Omics data: Genomic,dbGaP
+ExRNA,data:3495 rna sequence,Omics data: Genomic,Generalist repositories
+ExRNA,data:2887 nucleic acid sequence record,Omics data: Genomic,GEO
+ExRNA,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+ExRNA,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+ExRNA,data:3917 count matrix,Omics data: Genomic,GEO
+ExRNA,data:3917 count matrix,Omics data: Genomic,dbGaP
+ExRNA,data:3917 count matrix,Omics data: Genomic,Generalist repositories
+GTEX,data:2887 nucleic acid sequence record,Omics data: Genomic,AnVIL
+GTEX,data:2887 nucleic acid sequence record,Omics data: Genomic,Monarch Initiative
+GTEX,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+GTEX,data:2887 nucleic acid sequence record,Omics data: Genomic,ClinVar
+GTEX,data:2887 nucleic acid sequence record,Omics data: Genomic,GEO
+GTEX,data:2887 nucleic acid sequence record,Omics data: Genomic,dbSNP
+GTEX,data:2887 nucleic acid sequence record,Omics data: Genomic,dbVar
+GTEX,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+GTEX,data:2530 organism report,Others,AnVIL
+GTEX,data:2530 organism report,Others,Monarch Initiative
+GTEX,data:2530 organism report,Others,dbGaP
+GTEX,data:2530 organism report,Others,ClinVar
+GTEX,data:2530 organism report,Others,GEO
+GTEX,data:2530 organism report,Others,dbSNP
+GTEX,data:2530 organism report,Others,dbVar
+GTEX,data:2530 organism report,Others,Generalist repositories
+GTEX,data:2602 genotype and phenotype data,Phenotype data,AnVIL
+GTEX,data:2602 genotype and phenotype data,Phenotype data,Monarch Initiative
+GTEX,data:2602 genotype and phenotype data,Phenotype data,dbGaP
+GTEX,data:2602 genotype and phenotype data,Phenotype data,ClinVar
+GTEX,data:2602 genotype and phenotype data,Phenotype data,GEO
+GTEX,data:2602 genotype and phenotype data,Phenotype data,dbSNP
+GTEX,data:2602 genotype and phenotype data,Phenotype data,dbVar
+GTEX,data:2602 genotype and phenotype data,Phenotype data,Generalist repositories
+GTEX,data:1714 microarray spots image,Imaging Data,AnVIL
+GTEX,data:1714 microarray spots image,Imaging Data,Monarch Initiative
+GTEX,data:1714 microarray spots image,Imaging Data,dbGaP
+GTEX,data:1714 microarray spots image,Imaging Data,ClinVar
+GTEX,data:1714 microarray spots image,Imaging Data,GEO
+GTEX,data:1714 microarray spots image,Imaging Data,dbSNP
+GTEX,data:1714 microarray spots image,Imaging Data,dbVar
+GTEX,data:1714 microarray spots image,Imaging Data,Generalist repositories
+GTEX,data:2603 expression data,Omics data: Genomic,AnVIL
+GTEX,data:2603 expression data,Omics data: Genomic,Monarch Initiative
+GTEX,data:2603 expression data,Omics data: Genomic,dbGaP
+GTEX,data:2603 expression data,Omics data: Genomic,ClinVar
+GTEX,data:2603 expression data,Omics data: Genomic,GEO
+GTEX,data:2603 expression data,Omics data: Genomic,dbSNP
+GTEX,data:2603 expression data,Omics data: Genomic,dbVar
+GTEX,data:2603 expression data,Omics data: Genomic,Generalist repositories
+GTEX,data:3113 sample annotation,Omics data: Genomic,AnVIL
+GTEX,data:3113 sample annotation,Omics data: Genomic,Monarch Initiative
+GTEX,data:3113 sample annotation,Omics data: Genomic,dbGaP
+GTEX,data:3113 sample annotation,Omics data: Genomic,ClinVar
+GTEX,data:3113 sample annotation,Omics data: Genomic,GEO
+GTEX,data:3113 sample annotation,Omics data: Genomic,dbSNP
+GTEX,data:3113 sample annotation,Omics data: Genomic,dbVar
+GTEX,data:3113 sample annotation,Omics data: Genomic,Generalist repositories
+GlyGen,data:2900 carbohydrate accession,Computational biology data,GlyGen Database
+GlyGen,data:2900 carbohydrate accession,Computational biology data,UniProt
+GlyGen,data:2900 carbohydrate accession,Computational biology data,Generalist repositories
+GlyGen,data:0944 peptide mass fingerprint,Computational biology data,GlyGen Database
+GlyGen,data:0944 peptide mass fingerprint,Computational biology data,UniProt
+GlyGen,data:0944 peptide mass fingerprint,Computational biology data,Generalist repositories
+GlyGen,data:3112 gene expression matrix,Computational biology data,GlyGen Database
+GlyGen,data:3112 gene expression matrix,Computational biology data,UniProt
+GlyGen,data:3112 gene expression matrix,Computational biology data,Generalist repositories
+GlyGen,data:1714 microarray spots image,Computational biology data,GlyGen Database
+GlyGen,data:1714 microarray spots image,Computational biology data,UniProt
+GlyGen,data:1714 microarray spots image,Computational biology data,Generalist repositories
+GlyGen,data:2764 protein name (uniprot),Computational biology data,GlyGen Database
+GlyGen,data:2764 protein name (uniprot),Computational biology data,UniProt
+GlyGen,data:2764 protein name (uniprot),Computational biology data,Generalist repositories
+GlyGen,data:3110 raw microarray data,Computational biology data,GlyGen Database
+GlyGen,data:3110 raw microarray data,Computational biology data,UniProt
+GlyGen,data:3110 raw microarray data,Computational biology data,Generalist repositories
+GlyGen,data:3111 processed microarray data,Computational biology data,GlyGen Database
+GlyGen,data:3111 processed microarray data,Computational biology data,UniProt
+GlyGen,data:3111 processed microarray data,Computational biology data,Generalist repositories
+HAfrica,data:0920 genotype/phenotype report,Omics data: Genomic,dbGaP
+HAfrica,data:0920 genotype/phenotype report,Omics data: Genomic,ClinVar
+HAfrica,data:0920 genotype/phenotype report,Omics data: Genomic,Generalist repositories
+HAfrica,data:0928 gene expression profile,Omics data: Genomic,dbGaP
+HAfrica,data:0928 gene expression profile,Omics data: Genomic,ClinVar
+HAfrica,data:0928 gene expression profile,Omics data: Genomic,Generalist repositories
+HAfrica,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+HAfrica,data:2887 nucleic acid sequence record,Omics data: Genomic,ClinVar
+HAfrica,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+HAfrica,data:3002 annotation track,Omics data: Genomic,dbGaP
+HAfrica,data:3002 annotation track,Omics data: Genomic,ClinVar
+HAfrica,data:3002 annotation track,Omics data: Genomic,Generalist repositories
+HMP,data:0907 protein family report,Omics data: Proteomic,dbGaP
+HMP,data:0907 protein family report,Omics data: Proteomic,GenBank
+HMP,data:0907 protein family report,Omics data: Proteomic,ClinVar
+HMP,data:0907 protein family report,Omics data: Proteomic,GEO
+HMP,data:0907 protein family report,Omics data: Proteomic,PeptideAtlas
+HMP,data:0907 protein family report,Omics data: Proteomic,UniProt
+HMP,data:0907 protein family report,Omics data: Proteomic,Generalist repositories
+HMP,data:2536 mass spectrometry data,Omics data: Proteomic,dbGaP
+HMP,data:2536 mass spectrometry data,Omics data: Proteomic,GenBank
+HMP,data:2536 mass spectrometry data,Omics data: Proteomic,ClinVar
+HMP,data:2536 mass spectrometry data,Omics data: Proteomic,GEO
+HMP,data:2536 mass spectrometry data,Omics data: Proteomic,PeptideAtlas
+HMP,data:2536 mass spectrometry data,Omics data: Proteomic,UniProt
+HMP,data:2536 mass spectrometry data,Omics data: Proteomic,Generalist repositories
+HMP,data:2600 pathway or network,Omics data: Proteomic,dbGaP
+HMP,data:2600 pathway or network,Omics data: Proteomic,GenBank
+HMP,data:2600 pathway or network,Omics data: Proteomic,ClinVar
+HMP,data:2600 pathway or network,Omics data: Proteomic,GEO
+HMP,data:2600 pathway or network,Omics data: Proteomic,PeptideAtlas
+HMP,data:2600 pathway or network,Omics data: Proteomic,UniProt
+HMP,data:2600 pathway or network,Omics data: Proteomic,Generalist repositories
+HMP,data:2603 expression data,Omics data: Genomic,dbGaP
+HMP,data:2603 expression data,Omics data: Genomic,GenBank
+HMP,data:2603 expression data,Omics data: Genomic,ClinVar
+HMP,data:2603 expression data,Omics data: Genomic,GEO
+HMP,data:2603 expression data,Omics data: Genomic,PeptideAtlas
+HMP,data:2603 expression data,Omics data: Genomic,UniProt
+HMP,data:2603 expression data,Omics data: Genomic,Generalist repositories
+HMP,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+HMP,data:2887 nucleic acid sequence record,Omics data: Genomic,GenBank
+HMP,data:2887 nucleic acid sequence record,Omics data: Genomic,ClinVar
+HMP,data:2887 nucleic acid sequence record,Omics data: Genomic,GEO
+HMP,data:2887 nucleic acid sequence record,Omics data: Genomic,PeptideAtlas
+HMP,data:2887 nucleic acid sequence record,Omics data: Genomic,UniProt
+HMP,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+HMP,data:2976 protein sequence,Omics data: Proteomic,dbGaP
+HMP,data:2976 protein sequence,Omics data: Proteomic,GenBank
+HMP,data:2976 protein sequence,Omics data: Proteomic,ClinVar
+HMP,data:2976 protein sequence,Omics data: Proteomic,GEO
+HMP,data:2976 protein sequence,Omics data: Proteomic,PeptideAtlas
+HMP,data:2976 protein sequence,Omics data: Proteomic,UniProt
+HMP,data:2976 protein sequence,Omics data: Proteomic,Generalist repositories
+HMP,data:3917 count matrix,Omics data: Genomic,dbGaP
+HMP,data:3917 count matrix,Omics data: Genomic,GenBank
+HMP,data:3917 count matrix,Omics data: Genomic,ClinVar
+HMP,data:3917 count matrix,Omics data: Genomic,GEO
+HMP,data:3917 count matrix,Omics data: Genomic,PeptideAtlas
+HMP,data:3917 count matrix,Omics data: Genomic,UniProt
+HMP,data:3917 count matrix,Omics data: Genomic,Generalist repositories
+HuBMAP,data:2536 mass spectrometry data,Omics data: Proteomic,dbGaP
+HuBMAP,data:2536 mass spectrometry data,Omics data: Proteomic,Cell Image Library
+HuBMAP,data:2536 mass spectrometry data,Omics data: Proteomic,Generalist repositories
+HuBMAP,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+HuBMAP,data:2887 nucleic acid sequence record,Omics data: Genomic,Cell Image Library
+HuBMAP,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+HuBMAP,data:2764 protein name (uniprot),Omics data: Proteomic,dbGaP
+HuBMAP,data:2764 protein name (uniprot),Omics data: Proteomic,Cell Image Library
+HuBMAP,data:2764 protein name (uniprot),Omics data: Proteomic,Generalist repositories
+HuBMAP,data:2968 image,Imaging Data,dbGaP
+HuBMAP,data:2968 image,Imaging Data,Cell Image Library
+HuBMAP,data:2968 image,Imaging Data,Generalist repositories
+HuBMAP,data:2603 expression data,Omics data: Genomic,dbGaP
+HuBMAP,data:2603 expression data,Omics data: Genomic,Cell Image Library
+HuBMAP,data:2603 expression data,Omics data: Genomic,Generalist repositories
+HuBMAP,data:3110 raw microarray data,Omics data: Genomic,dbGaP
+HuBMAP,data:3110 raw microarray data,Omics data: Genomic,Cell Image Library
+HuBMAP,data:3110 raw microarray data,Omics data: Genomic,Generalist repositories
+HuBMAP,data:3111 processed microarray data,Omics data: Genomic,dbGaP
+HuBMAP,data:3111 processed microarray data,Omics data: Genomic,Cell Image Library
+HuBMAP,data:3111 processed microarray data,Omics data: Genomic,Generalist repositories
+HuBMAP,data:3917 count matrix,Omics data: Genomic,dbGaP
+HuBMAP,data:3917 count matrix,Omics data: Genomic,Cell Image Library
+HuBMAP,data:3917 count matrix,Omics data: Genomic,Generalist repositories
+IDG,data:0993 drug identifier,Others,Pharos
+IDG,data:0993 drug identifier,Others,Monarch Initiative
+IDG,data:0993 drug identifier,Others,PeptideAtlas
+IDG,data:0993 drug identifier,Others,dbGaP
+IDG,data:0993 drug identifier,Others,Generalist repositories
+IDG,data:0907 protein family report,Others,Pharos
+IDG,data:0907 protein family report,Others,Monarch Initiative
+IDG,data:0907 protein family report,Others,PeptideAtlas
+IDG,data:0907 protein family report,Others,dbGaP
+IDG,data:0907 protein family report,Others,Generalist repositories
+IDG,data:1537 protein structure report,Others,Pharos
+IDG,data:1537 protein structure report,Others,Monarch Initiative
+IDG,data:1537 protein structure report,Others,PeptideAtlas
+IDG,data:1537 protein structure report,Others,dbGaP
+IDG,data:1537 protein structure report,Others,Generalist repositories
+IDG,data:0906 protein interaction data,Omics data: Proteomic,Pharos
+IDG,data:0906 protein interaction data,Omics data: Proteomic,Monarch Initiative
+IDG,data:0906 protein interaction data,Omics data: Proteomic,PeptideAtlas
+IDG,data:0906 protein interaction data,Omics data: Proteomic,dbGaP
+IDG,data:0906 protein interaction data,Omics data: Proteomic,Generalist repositories
+IDG,data:2603 expression data,Omics data: Genomic,Pharos
+IDG,data:2603 expression data,Omics data: Genomic,Monarch Initiative
+IDG,data:2603 expression data,Omics data: Genomic,PeptideAtlas
+IDG,data:2603 expression data,Omics data: Genomic,dbGaP
+IDG,data:2603 expression data,Omics data: Genomic,Generalist repositories
+IDG,data:2887 nucleic acid sequence record,Omics data: Genomic,Pharos
+IDG,data:2887 nucleic acid sequence record,Omics data: Genomic,Monarch Initiative
+IDG,data:2887 nucleic acid sequence record,Omics data: Genomic,PeptideAtlas
+IDG,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+IDG,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+KOMP2,data:2968 image,Imaging Data,MGI
+KOMP2,data:2968 image,Imaging Data,MPD
+KOMP2,data:2968 image,Imaging Data,Generalist repositories
+KOMP2,data:2602 genotype and phenotype data,Phenotype data,MGI
+KOMP2,data:2602 genotype and phenotype data,Phenotype data,MPD
+KOMP2,data:2602 genotype and phenotype data,Phenotype data,Generalist repositories
+KOMP2,data:3110 raw microarray data,Omics data: Genomic,MGI
+KOMP2,data:3110 raw microarray data,Omics data: Genomic,MPD
+KOMP2,data:3110 raw microarray data,Omics data: Genomic,Generalist repositories
+KOMP2,data:3111 processed microarray data,Omics data: Genomic,MGI
+KOMP2,data:3111 processed microarray data,Omics data: Genomic,MPD
+KOMP2,data:3111 processed microarray data,Omics data: Genomic,Generalist repositories
+KOMP2,data:3917 count matrix,Omics data: Genomic,MGI
+KOMP2,data:3917 count matrix,Omics data: Genomic,MPD
+KOMP2,data:3917 count matrix,Omics data: Genomic,Generalist repositories
+KOMP2,data:0928 gene expression profile,Omics data: Genomic,MGI
+KOMP2,data:0928 gene expression profile,Omics data: Genomic,MPD
+KOMP2,data:0928 gene expression profile,Omics data: Genomic,Generalist repositories
+KOMP2,data:2887 nucleic acid sequence record,Omics data: Genomic,MGI
+KOMP2,data:2887 nucleic acid sequence record,Omics data: Genomic,MPD
+KOMP2,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+KOMP2,data:3002 annotation track,Omics data: Genomic,MGI
+KOMP2,data:3002 annotation track,Omics data: Genomic,MPD
+KOMP2,data:3002 annotation track,Omics data: Genomic,Generalist repositories
+Kids First,data:1383 nucleic acid sequence alignment,Omics data: Genomic,AnVIL
+Kids First,data:1383 nucleic acid sequence alignment,Omics data: Genomic,Monarch Initiative
+Kids First,data:1383 nucleic acid sequence alignment,Omics data: Genomic,dbGaP
+Kids First,data:1383 nucleic acid sequence alignment,Omics data: Genomic,GenBank
+Kids First,data:1383 nucleic acid sequence alignment,Omics data: Genomic,ClinVar
+Kids First,data:1383 nucleic acid sequence alignment,Omics data: Genomic,ClinicalTrials.gov
+Kids First,data:1383 nucleic acid sequence alignment,Omics data: Genomic,Generalist repositories
+Kids First,data:2603 expression data,Omics data: Genomic,AnVIL
+Kids First,data:2603 expression data,Omics data: Genomic,Monarch Initiative
+Kids First,data:2603 expression data,Omics data: Genomic,dbGaP
+Kids First,data:2603 expression data,Omics data: Genomic,GenBank
+Kids First,data:2603 expression data,Omics data: Genomic,ClinVar
+Kids First,data:2603 expression data,Omics data: Genomic,ClinicalTrials.gov
+Kids First,data:2603 expression data,Omics data: Genomic,Generalist repositories
+Kids First,data:3112 gene expression matrix,Omics data: Genomic,AnVIL
+Kids First,data:3112 gene expression matrix,Omics data: Genomic,Monarch Initiative
+Kids First,data:3112 gene expression matrix,Omics data: Genomic,dbGaP
+Kids First,data:3112 gene expression matrix,Omics data: Genomic,GenBank
+Kids First,data:3112 gene expression matrix,Omics data: Genomic,ClinVar
+Kids First,data:3112 gene expression matrix,Omics data: Genomic,ClinicalTrials.gov
+Kids First,data:3112 gene expression matrix,Omics data: Genomic,Generalist repositories
+Kids First,data:3210 genome index,Omics data: Genomic,AnVIL
+Kids First,data:3210 genome index,Omics data: Genomic,Monarch Initiative
+Kids First,data:3210 genome index,Omics data: Genomic,dbGaP
+Kids First,data:3210 genome index,Omics data: Genomic,GenBank
+Kids First,data:3210 genome index,Omics data: Genomic,ClinVar
+Kids First,data:3210 genome index,Omics data: Genomic,ClinicalTrials.gov
+Kids First,data:3210 genome index,Omics data: Genomic,Generalist repositories
+Kids First,data:3494 dna sequence,Omics data: Genomic,AnVIL
+Kids First,data:3494 dna sequence,Omics data: Genomic,Monarch Initiative
+Kids First,data:3494 dna sequence,Omics data: Genomic,dbGaP
+Kids First,data:3494 dna sequence,Omics data: Genomic,GenBank
+Kids First,data:3494 dna sequence,Omics data: Genomic,ClinVar
+Kids First,data:3494 dna sequence,Omics data: Genomic,ClinicalTrials.gov
+Kids First,data:3494 dna sequence,Omics data: Genomic,Generalist repositories
+Kids First,data:3498 sequence variations,Omics data: Genomic,AnVIL
+Kids First,data:3498 sequence variations,Omics data: Genomic,Monarch Initiative
+Kids First,data:3498 sequence variations,Omics data: Genomic,dbGaP
+Kids First,data:3498 sequence variations,Omics data: Genomic,GenBank
+Kids First,data:3498 sequence variations,Omics data: Genomic,ClinVar
+Kids First,data:3498 sequence variations,Omics data: Genomic,ClinicalTrials.gov
+Kids First,data:3498 sequence variations,Omics data: Genomic,Generalist repositories
+Kids First,data:3914 quality control report,Clinical data,AnVIL
+Kids First,data:3914 quality control report,Clinical data,Monarch Initiative
+Kids First,data:3914 quality control report,Clinical data,dbGaP
+Kids First,data:3914 quality control report,Clinical data,GenBank
+Kids First,data:3914 quality control report,Clinical data,ClinVar
+Kids First,data:3914 quality control report,Clinical data,ClinicalTrials.gov
+Kids First,data:3914 quality control report,Clinical data,Generalist repositories
+LINCS,data:0928 gene expression profile,Omics data: Genomic,AnVIL
+LINCS,data:0928 gene expression profile,Omics data: Genomic,Monarch Initiative
+LINCS,data:0928 gene expression profile,Omics data: Genomic,PeptideAtlas
+LINCS,data:0928 gene expression profile,Omics data: Genomic,Cell Image Library
+LINCS,data:0928 gene expression profile,Omics data: Genomic,dbGaP
+LINCS,data:0928 gene expression profile,Omics data: Genomic,GEO
+LINCS,data:0928 gene expression profile,Omics data: Genomic,ClinVar
+LINCS,data:0928 gene expression profile,Omics data: Genomic,dbSNP
+LINCS,data:0928 gene expression profile,Omics data: Genomic,dbVar
+LINCS,data:0928 gene expression profile,Omics data: Genomic,Generalist repositories
+LINCS,data:1566 protein-ligand interaction report,Others,AnVIL
+LINCS,data:1566 protein-ligand interaction report,Others,Monarch Initiative
+LINCS,data:1566 protein-ligand interaction report,Others,PeptideAtlas
+LINCS,data:1566 protein-ligand interaction report,Others,Cell Image Library
+LINCS,data:1566 protein-ligand interaction report,Others,dbGaP
+LINCS,data:1566 protein-ligand interaction report,Others,GEO
+LINCS,data:1566 protein-ligand interaction report,Others,ClinVar
+LINCS,data:1566 protein-ligand interaction report,Others,dbSNP
+LINCS,data:1566 protein-ligand interaction report,Others,dbVar
+LINCS,data:1566 protein-ligand interaction report,Others,Generalist repositories
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,AnVIL
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,Monarch Initiative
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,PeptideAtlas
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,Cell Image Library
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,dbGaP
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,GEO
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,ClinVar
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,dbSNP
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,dbVar
+LINCS,data:2536 mass spectrometry data,Omics data: Metabolomic,Generalist repositories
+LINCS,data:2603 expression data,Omics data: Genomic,AnVIL
+LINCS,data:2603 expression data,Omics data: Genomic,Monarch Initiative
+LINCS,data:2603 expression data,Omics data: Genomic,PeptideAtlas
+LINCS,data:2603 expression data,Omics data: Genomic,Cell Image Library
+LINCS,data:2603 expression data,Omics data: Genomic,dbGaP
+LINCS,data:2603 expression data,Omics data: Genomic,GEO
+LINCS,data:2603 expression data,Omics data: Genomic,ClinVar
+LINCS,data:2603 expression data,Omics data: Genomic,dbSNP
+LINCS,data:2603 expression data,Omics data: Genomic,dbVar
+LINCS,data:2603 expression data,Omics data: Genomic,Generalist repositories
+LINCS,data:2968 image,Imaging Data,AnVIL
+LINCS,data:2968 image,Imaging Data,Monarch Initiative
+LINCS,data:2968 image,Imaging Data,PeptideAtlas
+LINCS,data:2968 image,Imaging Data,Cell Image Library
+LINCS,data:2968 image,Imaging Data,dbGaP
+LINCS,data:2968 image,Imaging Data,GEO
+LINCS,data:2968 image,Imaging Data,ClinVar
+LINCS,data:2968 image,Imaging Data,dbSNP
+LINCS,data:2968 image,Imaging Data,dbVar
+LINCS,data:2968 image,Imaging Data,Generalist repositories
+LINCS,data:3002 annotation track,Omics data: Genomic,AnVIL
+LINCS,data:3002 annotation track,Omics data: Genomic,Monarch Initiative
+LINCS,data:3002 annotation track,Omics data: Genomic,PeptideAtlas
+LINCS,data:3002 annotation track,Omics data: Genomic,Cell Image Library
+LINCS,data:3002 annotation track,Omics data: Genomic,dbGaP
+LINCS,data:3002 annotation track,Omics data: Genomic,GEO
+LINCS,data:3002 annotation track,Omics data: Genomic,ClinVar
+LINCS,data:3002 annotation track,Omics data: Genomic,dbSNP
+LINCS,data:3002 annotation track,Omics data: Genomic,dbVar
+LINCS,data:3002 annotation track,Omics data: Genomic,Generalist repositories
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,AnVIL
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,Monarch Initiative
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,PeptideAtlas
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,Cell Image Library
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,dbGaP
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,GEO
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,ClinVar
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,dbSNP
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,dbVar
+LINCS,data:3112 gene expression matrix,Omics data: Genomic,Generalist repositories
+LINCS,data:3917 count matrix,Omics data: Genomic,AnVIL
+LINCS,data:3917 count matrix,Omics data: Genomic,Monarch Initiative
+LINCS,data:3917 count matrix,Omics data: Genomic,PeptideAtlas
+LINCS,data:3917 count matrix,Omics data: Genomic,Cell Image Library
+LINCS,data:3917 count matrix,Omics data: Genomic,dbGaP
+LINCS,data:3917 count matrix,Omics data: Genomic,GEO
+LINCS,data:3917 count matrix,Omics data: Genomic,ClinVar
+LINCS,data:3917 count matrix,Omics data: Genomic,dbSNP
+LINCS,data:3917 count matrix,Omics data: Genomic,dbVar
+LINCS,data:3917 count matrix,Omics data: Genomic,Generalist repositories
+Metabolomics,data:2536 mass spectrometry data,Omics data: Metabolomic,PeptideAtlas
+Metabolomics,data:2536 mass spectrometry data,Omics data: Metabolomic,Generalist repositories
+Metabolomics,data:3488 nmr spectrum,Omics data: Metabolomic,PeptideAtlas
+Metabolomics,data:3488 nmr spectrum,Omics data: Metabolomic,Generalist repositories
+MoTrPAC,data:2536 mass spectrometry data,Omics data: Metabolomic,AnVIL
+MoTrPAC,data:2536 mass spectrometry data,Omics data: Metabolomic,Monarch Initiative
+MoTrPAC,data:2536 mass spectrometry data,Omics data: Metabolomic,dbGaP
+MoTrPAC,data:2536 mass spectrometry data,Omics data: Metabolomic,GenBank
+MoTrPAC,data:2536 mass spectrometry data,Omics data: Metabolomic,ClinVar
+MoTrPAC,data:2536 mass spectrometry data,Omics data: Metabolomic,ClinicalTrials.gov
+MoTrPAC,data:2536 mass spectrometry data,Omics data: Metabolomic,Generalist repositories
+MoTrPAC,data:0928 gene expression profile,Omics data: Genomic,AnVIL
+MoTrPAC,data:0928 gene expression profile,Omics data: Genomic,Monarch Initiative
+MoTrPAC,data:0928 gene expression profile,Omics data: Genomic,dbGaP
+MoTrPAC,data:0928 gene expression profile,Omics data: Genomic,GenBank
+MoTrPAC,data:0928 gene expression profile,Omics data: Genomic,ClinVar
+MoTrPAC,data:0928 gene expression profile,Omics data: Genomic,ClinicalTrials.gov
+MoTrPAC,data:0928 gene expression profile,Omics data: Genomic,Generalist repositories
+MoTrPAC,data:1566 protein-ligand interaction report,Others,AnVIL
+MoTrPAC,data:1566 protein-ligand interaction report,Others,Monarch Initiative
+MoTrPAC,data:1566 protein-ligand interaction report,Others,dbGaP
+MoTrPAC,data:1566 protein-ligand interaction report,Others,GenBank
+MoTrPAC,data:1566 protein-ligand interaction report,Others,ClinVar
+MoTrPAC,data:1566 protein-ligand interaction report,Others,ClinicalTrials.gov
+MoTrPAC,data:1566 protein-ligand interaction report,Others,Generalist repositories
+MoTrPAC,data:3110 raw microarray data,Omics data: Genomic,AnVIL
+MoTrPAC,data:3110 raw microarray data,Omics data: Genomic,Monarch Initiative
+MoTrPAC,data:3110 raw microarray data,Omics data: Genomic,dbGaP
+MoTrPAC,data:3110 raw microarray data,Omics data: Genomic,GenBank
+MoTrPAC,data:3110 raw microarray data,Omics data: Genomic,ClinVar
+MoTrPAC,data:3110 raw microarray data,Omics data: Genomic,ClinicalTrials.gov
+MoTrPAC,data:3110 raw microarray data,Omics data: Genomic,Generalist repositories
+MoTrPAC,data:3111 processed microarray data,Omics data: Genomic,AnVIL
+MoTrPAC,data:3111 processed microarray data,Omics data: Genomic,Monarch Initiative
+MoTrPAC,data:3111 processed microarray data,Omics data: Genomic,dbGaP
+MoTrPAC,data:3111 processed microarray data,Omics data: Genomic,GenBank
+MoTrPAC,data:3111 processed microarray data,Omics data: Genomic,ClinVar
+MoTrPAC,data:3111 processed microarray data,Omics data: Genomic,ClinicalTrials.gov
+MoTrPAC,data:3111 processed microarray data,Omics data: Genomic,Generalist repositories
+MoTrPAC,data:3917 count matrix,Omics data: Genomic,AnVIL
+MoTrPAC,data:3917 count matrix,Omics data: Genomic,Monarch Initiative
+MoTrPAC,data:3917 count matrix,Omics data: Genomic,dbGaP
+MoTrPAC,data:3917 count matrix,Omics data: Genomic,GenBank
+MoTrPAC,data:3917 count matrix,Omics data: Genomic,ClinVar
+MoTrPAC,data:3917 count matrix,Omics data: Genomic,ClinicalTrials.gov
+MoTrPAC,data:3917 count matrix,Omics data: Genomic,Generalist repositories
+MoTrPAC,data:2887 nucleic acid sequence record,Omics data: Genomic,AnVIL
+MoTrPAC,data:2887 nucleic acid sequence record,Omics data: Genomic,Monarch Initiative
+MoTrPAC,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+MoTrPAC,data:2887 nucleic acid sequence record,Omics data: Genomic,GenBank
+MoTrPAC,data:2887 nucleic acid sequence record,Omics data: Genomic,ClinVar
+MoTrPAC,data:2887 nucleic acid sequence record,Omics data: Genomic,ClinicalTrials.gov
+MoTrPAC,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+MoTrPAC,data:2976 protein sequence,Omics data: Proteomic,AnVIL
+MoTrPAC,data:2976 protein sequence,Omics data: Proteomic,Monarch Initiative
+MoTrPAC,data:2976 protein sequence,Omics data: Proteomic,dbGaP
+MoTrPAC,data:2976 protein sequence,Omics data: Proteomic,GenBank
+MoTrPAC,data:2976 protein sequence,Omics data: Proteomic,ClinVar
+MoTrPAC,data:2976 protein sequence,Omics data: Proteomic,ClinicalTrials.gov
+MoTrPAC,data:2976 protein sequence,Omics data: Proteomic,Generalist repositories
+MoTrPAC,data:0944 peptide mass fingerprint,Omics data: Proteomic,AnVIL
+MoTrPAC,data:0944 peptide mass fingerprint,Omics data: Proteomic,Monarch Initiative
+MoTrPAC,data:0944 peptide mass fingerprint,Omics data: Proteomic,dbGaP
+MoTrPAC,data:0944 peptide mass fingerprint,Omics data: Proteomic,GenBank
+MoTrPAC,data:0944 peptide mass fingerprint,Omics data: Proteomic,ClinVar
+MoTrPAC,data:0944 peptide mass fingerprint,Omics data: Proteomic,ClinicalTrials.gov
+MoTrPAC,data:0944 peptide mass fingerprint,Omics data: Proteomic,Generalist repositories
+SPARC,data:2968 image,Imaging Data,SPARC database
+SPARC,data:2968 image,Imaging Data,Pennsieve
+SPARC,data:2968 image,Imaging Data,GEO
+SPARC,data:2968 image,Imaging Data,AnVIL
+SPARC,data:2968 image,Imaging Data,BioData Catalyst
+SPARC,data:2968 image,Imaging Data,Monarch Initiative
+SPARC,data:2968 image,Imaging Data,GenBank
+SPARC,data:2968 image,Imaging Data,ClinVar
+SPARC,data:2968 image,Imaging Data,ClinicalTrials.gov
+SPARC,data:2968 image,Imaging Data,dbSNP
+SPARC,data:2968 image,Imaging Data,dbVar
+SPARC,data:2968 image,Imaging Data,Generalist repositories
+SPARC,data:3110 raw microarray data,Omics data: Genomic,SPARC database
+SPARC,data:3110 raw microarray data,Omics data: Genomic,Pennsieve
+SPARC,data:3110 raw microarray data,Omics data: Genomic,GEO
+SPARC,data:3110 raw microarray data,Omics data: Genomic,AnVIL
+SPARC,data:3110 raw microarray data,Omics data: Genomic,BioData Catalyst
+SPARC,data:3110 raw microarray data,Omics data: Genomic,Monarch Initiative
+SPARC,data:3110 raw microarray data,Omics data: Genomic,GenBank
+SPARC,data:3110 raw microarray data,Omics data: Genomic,ClinVar
+SPARC,data:3110 raw microarray data,Omics data: Genomic,ClinicalTrials.gov
+SPARC,data:3110 raw microarray data,Omics data: Genomic,dbSNP
+SPARC,data:3110 raw microarray data,Omics data: Genomic,dbVar
+SPARC,data:3110 raw microarray data,Omics data: Genomic,Generalist repositories
+SPARC,data:3111 processed microarray data,Omics data: Genomic,SPARC database
+SPARC,data:3111 processed microarray data,Omics data: Genomic,Pennsieve
+SPARC,data:3111 processed microarray data,Omics data: Genomic,GEO
+SPARC,data:3111 processed microarray data,Omics data: Genomic,AnVIL
+SPARC,data:3111 processed microarray data,Omics data: Genomic,BioData Catalyst
+SPARC,data:3111 processed microarray data,Omics data: Genomic,Monarch Initiative
+SPARC,data:3111 processed microarray data,Omics data: Genomic,GenBank
+SPARC,data:3111 processed microarray data,Omics data: Genomic,ClinVar
+SPARC,data:3111 processed microarray data,Omics data: Genomic,ClinicalTrials.gov
+SPARC,data:3111 processed microarray data,Omics data: Genomic,dbSNP
+SPARC,data:3111 processed microarray data,Omics data: Genomic,dbVar
+SPARC,data:3111 processed microarray data,Omics data: Genomic,Generalist repositories
+SPARC,data:3917 count matrix,Omics data: Genomic,SPARC database
+SPARC,data:3917 count matrix,Omics data: Genomic,Pennsieve
+SPARC,data:3917 count matrix,Omics data: Genomic,GEO
+SPARC,data:3917 count matrix,Omics data: Genomic,AnVIL
+SPARC,data:3917 count matrix,Omics data: Genomic,BioData Catalyst
+SPARC,data:3917 count matrix,Omics data: Genomic,Monarch Initiative
+SPARC,data:3917 count matrix,Omics data: Genomic,GenBank
+SPARC,data:3917 count matrix,Omics data: Genomic,ClinVar
+SPARC,data:3917 count matrix,Omics data: Genomic,ClinicalTrials.gov
+SPARC,data:3917 count matrix,Omics data: Genomic,dbSNP
+SPARC,data:3917 count matrix,Omics data: Genomic,dbVar
+SPARC,data:3917 count matrix,Omics data: Genomic,Generalist repositories
+SPARC,data:0928 gene expression profile,Omics data: Genomic,SPARC database
+SPARC,data:0928 gene expression profile,Omics data: Genomic,Pennsieve
+SPARC,data:0928 gene expression profile,Omics data: Genomic,GEO
+SPARC,data:0928 gene expression profile,Omics data: Genomic,AnVIL
+SPARC,data:0928 gene expression profile,Omics data: Genomic,BioData Catalyst
+SPARC,data:0928 gene expression profile,Omics data: Genomic,Monarch Initiative
+SPARC,data:0928 gene expression profile,Omics data: Genomic,GenBank
+SPARC,data:0928 gene expression profile,Omics data: Genomic,ClinVar
+SPARC,data:0928 gene expression profile,Omics data: Genomic,ClinicalTrials.gov
+SPARC,data:0928 gene expression profile,Omics data: Genomic,dbSNP
+SPARC,data:0928 gene expression profile,Omics data: Genomic,dbVar
+SPARC,data:0928 gene expression profile,Omics data: Genomic,Generalist repositories
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,SPARC database
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,Pennsieve
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,GEO
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,AnVIL
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,BioData Catalyst
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,Monarch Initiative
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,GenBank
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,ClinVar
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,ClinicalTrials.gov
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,dbSNP
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,dbVar
+SPARC,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+SenNet,data:2536 mass spectrometry data,Omics data: Proteomic,dbGaP
+SenNet,data:2536 mass spectrometry data,Omics data: Proteomic,Cell Image Library
+SenNet,data:2536 mass spectrometry data,Omics data: Proteomic,Generalist repositories
+SenNet,data:3110 raw microarray data,Omics data: Genomic,dbGaP
+SenNet,data:3110 raw microarray data,Omics data: Genomic,Cell Image Library
+SenNet,data:3110 raw microarray data,Omics data: Genomic,Generalist repositories
+SenNet,data:3111 processed microarray data,Omics data: Genomic,dbGaP
+SenNet,data:3111 processed microarray data,Omics data: Genomic,Cell Image Library
+SenNet,data:3111 processed microarray data,Omics data: Genomic,Generalist repositories
+SenNet,data:3917 count matrix,Omics data: Genomic,dbGaP
+SenNet,data:3917 count matrix,Omics data: Genomic,Cell Image Library
+SenNet,data:3917 count matrix,Omics data: Genomic,Generalist repositories
+SenNet,data:0928 gene expression profile,Omics data: Genomic,dbGaP
+SenNet,data:0928 gene expression profile,Omics data: Genomic,Cell Image Library
+SenNet,data:0928 gene expression profile,Omics data: Genomic,Generalist repositories
+SenNet,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+SenNet,data:2887 nucleic acid sequence record,Omics data: Genomic,Cell Image Library
+SenNet,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,dbGaP
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,dbSNP
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,dbVar
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,ClinVar
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,GenBank
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,GEO
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,AnVIL
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,ZFIN
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,MGI
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,Flybase
+UDN,data:2887 nucleic acid sequence record,Omics data: Genomic,Generalist repositories
+UDN,data:2602 genotype and phenotype data,Phenotype data,dbGaP
+UDN,data:2602 genotype and phenotype data,Phenotype data,dbSNP
+UDN,data:2602 genotype and phenotype data,Phenotype data,dbVar
+UDN,data:2602 genotype and phenotype data,Phenotype data,ClinVar
+UDN,data:2602 genotype and phenotype data,Phenotype data,GenBank
+UDN,data:2602 genotype and phenotype data,Phenotype data,GEO
+UDN,data:2602 genotype and phenotype data,Phenotype data,AnVIL
+UDN,data:2602 genotype and phenotype data,Phenotype data,ZFIN
+UDN,data:2602 genotype and phenotype data,Phenotype data,MGI
+UDN,data:2602 genotype and phenotype data,Phenotype data,Flybase
+UDN,data:2602 genotype and phenotype data,Phenotype data,Generalist repositories
+UDN,data:1714 microarray spots image,Imaging Data,dbGaP
+UDN,data:1714 microarray spots image,Imaging Data,dbSNP
+UDN,data:1714 microarray spots image,Imaging Data,dbVar
+UDN,data:1714 microarray spots image,Imaging Data,ClinVar
+UDN,data:1714 microarray spots image,Imaging Data,GenBank
+UDN,data:1714 microarray spots image,Imaging Data,GEO
+UDN,data:1714 microarray spots image,Imaging Data,AnVIL
+UDN,data:1714 microarray spots image,Imaging Data,ZFIN
+UDN,data:1714 microarray spots image,Imaging Data,MGI
+UDN,data:1714 microarray spots image,Imaging Data,Flybase
+UDN,data:1714 microarray spots image,Imaging Data,Generalist repositories
+UDN,data:2603 expression data,Omics data: Genomic,dbGaP
+UDN,data:2603 expression data,Omics data: Genomic,dbSNP
+UDN,data:2603 expression data,Omics data: Genomic,dbVar
+UDN,data:2603 expression data,Omics data: Genomic,ClinVar
+UDN,data:2603 expression data,Omics data: Genomic,GenBank
+UDN,data:2603 expression data,Omics data: Genomic,GEO
+UDN,data:2603 expression data,Omics data: Genomic,AnVIL
+UDN,data:2603 expression data,Omics data: Genomic,ZFIN
+UDN,data:2603 expression data,Omics data: Genomic,MGI
+UDN,data:2603 expression data,Omics data: Genomic,Flybase
+UDN,data:2603 expression data,Omics data: Genomic,Generalist repositories
+UDN,data:3113 sample annotation,Omics data: Genomic,dbGaP
+UDN,data:3113 sample annotation,Omics data: Genomic,dbSNP
+UDN,data:3113 sample annotation,Omics data: Genomic,dbVar
+UDN,data:3113 sample annotation,Omics data: Genomic,ClinVar
+UDN,data:3113 sample annotation,Omics data: Genomic,GenBank
+UDN,data:3113 sample annotation,Omics data: Genomic,GEO
+UDN,data:3113 sample annotation,Omics data: Genomic,AnVIL
+UDN,data:3113 sample annotation,Omics data: Genomic,ZFIN
+UDN,data:3113 sample annotation,Omics data: Genomic,MGI
+UDN,data:3113 sample annotation,Omics data: Genomic,Flybase
+UDN,data:3113 sample annotation,Omics data: Genomic,Generalist repositories`
+
+            const lines = csvString.trim().split("\n");
+            const headers = lines[0].split(",").map(h => h.trim());
+            const data = lines.slice(1).map(line => {
+                const values = line.split(",").map(v => v.trim());
+                const obj = {};
+                headers.forEach((header, i) => {
+                    obj[header] = values[i];
+                });
+                return obj;
+            });
+
+            const columns = [
+                "CFDE Programs",
+                "Data Types",
+                "Descriptive tags",
+                "Suggested Repositories"
+            ];
+
+            const order = columns.map(col => {
+                const seen = new Set();
+                const arr = [];
+                data.forEach(row => {
+                    const value = row[col];
+                    if (!seen.has(value)) {
+                        seen.add(value);
+                        arr.push(value);
+                    }
+                });
+                console.log(seen);
+                return arr;
+            });
+
+            // sort alphabetically
+            order[1].sort();
+
+            // order[2] = ["Omics data: Genomic", "Omics data: Proteomic", "Omics data: Metabolomic", "Imaging Data", "Phenotype data", "Clinical data", "Computational biology data", "Computational Processed Data", "Other"];
+
+            const genRepoIndex = order[3].indexOf("Generalist repositories");
+            if (genRepoIndex !== -1) {
+                order[3].splice(genRepoIndex, 1);
+                order[3].unshift("Generalist repositories");
+            }
+
+            const omicsIndex = order[2].indexOf("Omics data: Metabolomic");
+            if (omicsIndex !== -1) {
+                order[2].splice(omicsIndex, 1);
+                order[2].splice(2, 0, "Omics data: Metabolomic");
+            }
+
+            const nodes = {};
+            let nodeIndex = 0;
+            const xValues = [0.005, 0.3, 0.6, 0.9];
+            const yStarts = [0.0125, 0.0125, 0.125, 0.0125];
+            const yIncrements = [0.03, 0.025, 0.065, 0.035];
+
+            order.forEach((colArray, i) => {
+                let x = xValues[i];
+                let y = yStarts[i];
+                colArray.forEach(value => {
+                    nodes[value] = {
+                        x: x,
+                        y: y,
+                        index: nodeIndex,
+                        label: value
+                    };
+                    y += yIncrements[i];
+                    nodeIndex++;
+                });
+            });
+
+            let links = [];
+            data.forEach(row => {
+                links.push([
+                    nodes[row["CFDE Programs"]].index,
+                    nodes[row["Data Types"]].index
+                ]);
+                links.push([
+                    nodes[row["Data Types"]].index,
+                    nodes[row["Descriptive tags"]].index
+                ]);
+                links.push([
+                    nodes[row["Descriptive tags"]].index,
+                    nodes[row["Suggested Repositories"]].index
+                ]);
+            });
+
+            const uniqueLinkSet = new Set();
+            const uniqueLinks = [];
+            links.forEach(link => {
+                const key = link.join(",");
+                if (!uniqueLinkSet.has(key)) {
+                    uniqueLinkSet.add(key);
+                    uniqueLinks.push(link);
+                }
+            });
+
+            const nodesArr = Object.values(nodes).sort((a, b) => a.index - b.index);
+
+            window.PLOTLYENV = window.PLOTLYENV || {};
+            if (document.getElementById("cd5db974-d0ce-4009-b514-76faa8c620b1")) {
+                Plotly.newPlot(
+                    "cd5db974-d0ce-4009-b514-76faa8c620b1",
+                    [
+                        {
+                            link: {
+                                source: [0].concat(uniqueLinks.map(link => link[0] + 2)),
+                                target: [1].concat(uniqueLinks.map(link => link[1] + 2)),
+                                value: [0.0000001].concat(Array(uniqueLinks.length).fill(0.1))
+                            },
+                            node: {
+                                label: ["", ""].concat(nodesArr.map(node => node.label)),
+                                line: { color: "gray", width: 0.5 },
+                                pad: 50,
+                                thickness: 20,
+                                x: [0.99, 0.99].concat(nodesArr.map(node => node.x)),
+                                y: [99, 99].concat(nodesArr.map(node => node.y))
+                            },
+                            type: "sankey",
+                        },
+                    ],
+                    {
+                        template: {
+                            data: {
+                                histogram2dcontour: [
+                                    {
+                                        type: "histogram2dcontour",
+                                        colorbar: { outlinewidth: 0, ticks: "" },
+                                        colorscale: [
+                                            [0.0, "#0d0887"],
+                                            [0.1111111111111111, "#46039f"],
+                                            [0.2222222222222222, "#7201a8"],
+                                            [0.3333333333333333, "#9c179e"],
+                                            [0.4444444444444444, "#bd3786"],
+                                            [0.5555555555555556, "#d8576b"],
+                                            [0.6666666666666666, "#ed7953"],
+                                            [0.7777777777777778, "#fb9f3a"],
+                                            [0.8888888888888888, "#fdca26"],
+                                            [1.0, "#f0f921"],
+                                        ],
+                                    },
+                                ],
+                                choropleth: [
+                                    {
+                                        type: "choropleth",
+                                        colorbar: { outlinewidth: 0, ticks: "" },
+                                    },
+                                ],
+                                histogram2d: [
+                                    {
+                                        type: "histogram2d",
+                                        colorbar: { outlinewidth: 0, ticks: "" },
+                                        colorscale: [
+                                            [0.0, "#0d0887"],
+                                            [0.1111111111111111, "#46039f"],
+                                            [0.2222222222222222, "#7201a8"],
+                                            [0.3333333333333333, "#9c179e"],
+                                            [0.4444444444444444, "#bd3786"],
+                                            [0.5555555555555556, "#d8576b"],
+                                            [0.6666666666666666, "#ed7953"],
+                                            [0.7777777777777778, "#fb9f3a"],
+                                            [0.8888888888888888, "#fdca26"],
+                                            [1.0, "#f0f921"],
+                                        ],
+                                    },
+                                ],
+                                heatmap: [
+                                    {
+                                        type: "heatmap",
+                                        colorbar: { outlinewidth: 0, ticks: "" },
+                                        colorscale: [
+                                            [0.0, "#0d0887"],
+                                            [0.1111111111111111, "#46039f"],
+                                            [0.2222222222222222, "#7201a8"],
+                                            [0.3333333333333333, "#9c179e"],
+                                            [0.4444444444444444, "#bd3786"],
+                                            [0.5555555555555556, "#d8576b"],
+                                            [0.6666666666666666, "#ed7953"],
+                                            [0.7777777777777778, "#fb9f3a"],
+                                            [0.8888888888888888, "#fdca26"],
+                                            [1.0, "#f0f921"],
+                                        ],
+                                    },
+                                ],
+                                heatmapgl: [
+                                    {
+                                        type: "heatmapgl",
+                                        colorbar: { outlinewidth: 0, ticks: "" },
+                                        colorscale: [
+                                            [0.0, "#0d0887"],
+                                            [0.1111111111111111, "#46039f"],
+                                            [0.2222222222222222, "#7201a8"],
+                                            [0.3333333333333333, "#9c179e"],
+                                            [0.4444444444444444, "#bd3786"],
+                                            [0.5555555555555556, "#d8576b"],
+                                            [0.6666666666666666, "#ed7953"],
+                                            [0.7777777777777778, "#fb9f3a"],
+                                            [0.8888888888888888, "#fdca26"],
+                                            [1.0, "#f0f921"],
+                                        ],
+                                    },
+                                ],
+                                contourcarpet: [
+                                    {
+                                        type: "contourcarpet",
+                                        colorbar: { outlinewidth: 0, ticks: "" },
+                                    },
+                                ],
+                                contour: [
+                                    {
+                                        type: "contour",
+                                        colorbar: { outlinewidth: 0, ticks: "" },
+                                        colorscale: [
+                                            [0.0, "#0d0887"],
+                                            [0.1111111111111111, "#46039f"],
+                                            [0.2222222222222222, "#7201a8"],
+                                            [0.3333333333333333, "#9c179e"],
+                                            [0.4444444444444444, "#bd3786"],
+                                            [0.5555555555555556, "#d8576b"],
+                                            [0.6666666666666666, "#ed7953"],
+                                            [0.7777777777777778, "#fb9f3a"],
+                                            [0.8888888888888888, "#fdca26"],
+                                            [1.0, "#f0f921"],
+                                        ],
+                                    },
+                                ],
+                                surface: [
+                                    {
+                                        type: "surface",
+                                        colorbar: { outlinewidth: 0, ticks: "" },
+                                        colorscale: [
+                                            [0.0, "#0d0887"],
+                                            [0.1111111111111111, "#46039f"],
+                                            [0.2222222222222222, "#7201a8"],
+                                            [0.3333333333333333, "#9c179e"],
+                                            [0.4444444444444444, "#bd3786"],
+                                            [0.5555555555555556, "#d8576b"],
+                                            [0.6666666666666666, "#ed7953"],
+                                            [0.7777777777777778, "#fb9f3a"],
+                                            [0.8888888888888888, "#fdca26"],
+                                            [1.0, "#f0f921"],
+                                        ],
+                                    },
+                                ],
+                                mesh3d: [
+                                    {
+                                        type: "mesh3d",
+                                        colorbar: { outlinewidth: 0, ticks: "" },
+                                    },
+                                ],
+                                scatter: [
+                                    {
+                                        fillpattern: {
+                                            fillmode: "overlay",
+                                            size: 10,
+                                            solidity: 0.2,
+                                        },
+                                        type: "scatter",
+                                    },
+                                ],
+                                parcoords: [
+                                    {
+                                        type: "parcoords",
+                                        line: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                    },
+                                ],
+                                scatterpolargl: [
+                                    {
+                                        type: "scatterpolargl",
+                                        marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                    },
+                                ],
+                                bar: [
+                                    {
+                                        error_x: { color: "#2a3f5f" },
+                                        error_y: { color: "#2a3f5f" },
+                                        marker: {
+                                            line: { color: "#E5ECF6", width: 0.5 },
+                                            pattern: {
+                                                fillmode: "overlay",
+                                                size: 10,
+                                                solidity: 0.2,
+                                            },
+                                        },
+                                        type: "bar",
+                                    },
+                                ],
+                                scattergeo: [
+                                    {
+                                        type: "scattergeo",
+                                        marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                    },
+                                ],
+                                scatterpolar: [
+                                    {
+                                        type: "scatterpolar",
+                                        marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                    },
+                                ],
+                                histogram: [
+                                    {
+                                        marker: {
+                                            pattern: {
+                                                fillmode: "overlay",
+                                                size: 10,
+                                                solidity: 0.2,
+                                            },
+                                        },
+                                        type: "histogram",
+                                    },
+                                ],
+                                scattergl: [
+                                    {
+                                        type: "scattergl",
+                                        marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                    },
+                                ],
+                                scatter3d: [
+                                    {
+                                        type: "scatter3d",
+                                        line: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                        marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                    },
+                                ],
+                                scattermapbox: [
+                                    {
+                                        type: "scattermapbox",
+                                        marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                    },
+                                ],
+                                scatterternary: [
+                                    {
+                                        type: "scatterternary",
+                                        marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                    },
+                                ],
+                                scattercarpet: [
+                                    {
+                                        type: "scattercarpet",
+                                        marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                    },
+                                ],
+                                carpet: [
+                                    {
+                                        aaxis: {
+                                            endlinecolor: "#2a3f5f",
+                                            gridcolor: "white",
+                                            linecolor: "white",
+                                            minorgridcolor: "white",
+                                            startlinecolor: "#2a3f5f",
+                                        },
+                                        baxis: {
+                                            endlinecolor: "#2a3f5f",
+                                            gridcolor: "white",
+                                            linecolor: "white",
+                                            minorgridcolor: "white",
+                                            startlinecolor: "#2a3f5f",
+                                        },
+                                        type: "carpet",
+                                    },
+                                ],
+                                table: [
+                                    {
+                                        cells: {
+                                            fill: { color: "#EBF0F8" },
+                                            line: { color: "white" },
+                                        },
+                                        header: {
+                                            fill: { color: "#C8D4E3" },
+                                            line: { color: "white" },
+                                        },
+                                        type: "table",
+                                    },
+                                ],
+                                barpolar: [
+                                    {
+                                        marker: {
+                                            line: { color: "#E5ECF6", width: 0.5 },
+                                            pattern: {
+                                                fillmode: "overlay",
+                                                size: 10,
+                                                solidity: 0.2,
+                                            },
+                                        },
+                                        type: "barpolar",
+                                    },
+                                ],
+                                pie: [{ automargin: true, type: "pie" }],
+                            },
+                            layout: {
+                                autotypenumbers: "strict",
+                                colorway: [
+                                    "#636efa",
+                                    "#EF553B",
+                                    "#00cc96",
+                                    "#ab63fa",
+                                    "#FFA15A",
+                                    "#19d3f3",
+                                    "#FF6692",
+                                    "#B6E880",
+                                    "#FF97FF",
+                                    "#FECB52",
+                                ],
+                                font: { color: "#2a3f5f" },
+                                hovermode: "closest",
+                                hoverlabel: { align: "left" },
+                                paper_bgcolor: "white",
+                                plot_bgcolor: "#E5ECF6",
+                                polar: {
+                                    bgcolor: "#E5ECF6",
+                                    angularaxis: {
+                                        gridcolor: "white",
+                                        linecolor: "white",
+                                        ticks: "",
+                                    },
+                                    radialaxis: {
+                                        gridcolor: "white",
+                                        linecolor: "white",
+                                        ticks: "",
+                                    },
+                                },
+                                ternary: {
+                                    bgcolor: "#E5ECF6",
+                                    aaxis: {
+                                        gridcolor: "white",
+                                        linecolor: "white",
+                                        ticks: "",
+                                    },
+                                    baxis: {
+                                        gridcolor: "white",
+                                        linecolor: "white",
+                                        ticks: "",
+                                    },
+                                    caxis: {
+                                        gridcolor: "white",
+                                        linecolor: "white",
+                                        ticks: "",
+                                    },
+                                },
+                                coloraxis: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                colorscale: {
+                                    sequential: [
+                                        [0.0, "#0d0887"],
+                                        [0.1111111111111111, "#46039f"],
+                                        [0.2222222222222222, "#7201a8"],
+                                        [0.3333333333333333, "#9c179e"],
+                                        [0.4444444444444444, "#bd3786"],
+                                        [0.5555555555555556, "#d8576b"],
+                                        [0.6666666666666666, "#ed7953"],
+                                        [0.7777777777777778, "#fb9f3a"],
+                                        [0.8888888888888888, "#fdca26"],
+                                        [1.0, "#f0f921"],
+                                    ],
+                                    sequentialminus: [
+                                        [0.0, "#0d0887"],
+                                        [0.1111111111111111, "#46039f"],
+                                        [0.2222222222222222, "#7201a8"],
+                                        [0.3333333333333333, "#9c179e"],
+                                        [0.4444444444444444, "#bd3786"],
+                                        [0.5555555555555556, "#d8576b"],
+                                        [0.6666666666666666, "#ed7953"],
+                                        [0.7777777777777778, "#fb9f3a"],
+                                        [0.8888888888888888, "#fdca26"],
+                                        [1.0, "#f0f921"],
+                                    ],
+                                    diverging: [
+                                        [0, "#8e0152"],
+                                        [0.1, "#c51b7d"],
+                                        [0.2, "#de77ae"],
+                                        [0.3, "#f1b6da"],
+                                        [0.4, "#fde0ef"],
+                                        [0.5, "#f7f7f7"],
+                                        [0.6, "#e6f5d0"],
+                                        [0.7, "#b8e186"],
+                                        [0.8, "#7fbc41"],
+                                        [0.9, "#4d9221"],
+                                        [1, "#276419"],
+                                    ],
+                                },
+                                xaxis: {
+                                    gridcolor: "white",
+                                    linecolor: "white",
+                                    ticks: "",
+                                    title: { standoff: 15 },
+                                    zerolinecolor: "white",
+                                    automargin: true,
+                                    zerolinewidth: 2,
+                                },
+                                yaxis: {
+                                    gridcolor: "white",
+                                    linecolor: "white",
+                                    ticks: "",
+                                    title: { standoff: 15 },
+                                    zerolinecolor: "white",
+                                    automargin: true,
+                                    zerolinewidth: 2,
+                                },
+                                scene: {
+                                    xaxis: {
+                                        backgroundcolor: "#E5ECF6",
+                                        gridcolor: "white",
+                                        linecolor: "white",
+                                        showbackground: true,
+                                        ticks: "",
+                                        zerolinecolor: "white",
+                                        gridwidth: 2,
+                                    },
+                                    yaxis: {
+                                        backgroundcolor: "#E5ECF6",
+                                        gridcolor: "white",
+                                        linecolor: "white",
+                                        showbackground: true,
+                                        ticks: "",
+                                        zerolinecolor: "white",
+                                        gridwidth: 2,
+                                    },
+                                    zaxis: {
+                                        backgroundcolor: "#E5ECF6",
+                                        gridcolor: "white",
+                                        linecolor: "white",
+                                        showbackground: true,
+                                        ticks: "",
+                                        zerolinecolor: "white",
+                                        gridwidth: 2,
+                                    },
+                                },
+                                shapedefaults: { line: { color: "#2a3f5f" } },
+                                annotationdefaults: {
+                                    arrowcolor: "#2a3f5f",
+                                    arrowhead: 0,
+                                    arrowwidth: 1,
+                                },
+                                geo: {
+                                    bgcolor: "white",
+                                    landcolor: "#E5ECF6",
+                                    subunitcolor: "white",
+                                    showland: true,
+                                    showlakes: true,
+                                    lakecolor: "white",
+                                },
+                                title: { x: 0.05 },
+                                mapbox: { style: "light" },
+                            },
+                        },
+                        width: window.innerWidth,
+                        height: 900,
+                        title: { text: "CFDE Datasets Descriptive Tags" },
+                        font: { size: 10 },
+                    },
+                    { responsive: true },
+                );
+            }
+        </script>
+    </div>
+</body>
+
+</html>
