@@ -1,0 +1,733 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+        Interactive Sankey Diagram for CFDE Program DCCs' Disease Categories
+    </title>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        body { margin: 0; font-family: sans-serif; color: #2a3f5f; background: #fff; }
+        #data-bar { padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 14px; border-bottom: 1px solid #e5ecf6; }
+        #data-status.error { color: #b00020; }
+        #data-notes { padding: 6px 16px; font-size: 13px; color: #8a5a00; }
+        #data-notes:empty { display: none; }
+        #data-notes div { margin: 2px 0; }
+    </style>
+</head>
+
+<body>
+    <div id="data-bar">
+        <!-- <span id="data-status">Loading data...</span> -->
+    </div>
+    <div id="data-notes"></div>
+    <div>
+        <script type="text/javascript">
+            window.PlotlyConfig = { MathJaxConfig: "local" };
+        </script>
+        <div id="cd5db974-d0ce-4009-b514-76faa8c620b1" class="plotly-graph-div" style="height: 2000px; width: 100%"></div>
+        <script type="text/csv" id="embedded-csv">
+Program,Disease and DOID,Disease Domain,Disease,DOID
+4DN,DOID:863 Nervous system disease,Nervous system disease,Nervous system disease,DOID:863
+4DN,DOID:9352 Type 2 diabetes mellitus,Metabolic disease,Type 2 diabetes mellitus,DOID:9352
+4DN,DOID:9352 Type 2 diabetes mellitus,Genetic disease,Type 2 diabetes mellitus,DOID:9352
+A2CPS,DOID:0060164 Pain disorder,Chronic pain,Pain disorder,DOID:0060164
+A2CPS,DOID: 8398 Osteoarthritis,Chronic pain,Osteoarthritis,DOID: 8398
+Bridge2AI,DOID:9352 Type 2 diabetes mellitus,Genetic disease,Type 2 diabetes mellitus,DOID:9352
+Bridge2AI,DOID:9352 Type 2 diabetes mellitus,Metabolic disease,Type 2 diabetes mellitus,DOID:9352
+Bridge2AI,DOID:8947  Diabetic retinopathy,Retinal Disease,Diabetic retinopathy,DOID:8947 
+Bridge2AI,DOID:8947  Diabetic retinopathy,Metabolic disease,Diabetic retinopathy,DOID:8947 
+Bridge2AI,DOID:10652 Alzheimer's disease,Neurodegenerative disease ,Alzheimer's disease,DOID:10652
+Bridge2AI,DOID:14330 Parkinson's disease,Neurodegenerative disease ,Parkinson's disease,DOID:14330
+Bridge2AI,DOID:1596 Depressive disorder,Mental health disorder ,Depressive disorder,DOID:1596
+Bridge2AI,DOID:5419 Schizophrenia,Mental health disorder ,Schizophrenia,DOID:5419
+Bridge2AI,DOID:6000  Congestive heart failure,Cardiovascular system disease,Congestive heart failure,DOID:6000 
+Bridge2AI,DOID:552 Pneumonia,Respiratory system disease,Pneumonia,DOID:552
+Bridge2AI,DOID:3083 COPD,Respiratory system disease,COPD,DOID:3083
+Bridge2AI,DOID:0050848 Obstructive sleep apnea,Sleep disorder,Obstructive sleep apnea,DOID:0050848
+Bridge2AI,DOID:0070717 Developmental delay with sleep apnea,Sleep disorder,Developmental delay with sleep apnea,DOID:0070717
+ExRNA,DOID:14330 Parkinson's disease,Neurodegenerative disease ,Parkinson's disease,DOID:14330
+ExRNA,DOID:10652 Alzheimer's disease,Neurodegenerative disease ,Alzheimer's disease,DOID:10652
+ExRNA,DOID:1287 Cardiovascular system disease,Cardiovascular system disease,Cardiovascular system disease,DOID:1287
+ExRNA,DOID:2841 Asthma,Respiratory system disease,Asthma,DOID:2841
+ExRNA,DOID:0081445 Sickle cell disease,Hematopoietic system disease ,Sickle cell disease,DOID:0081445
+ExRNA,DOID:9744 Type 1 diabetes mellitus,Metabolic disease,Type 1 diabetes mellitus,DOID:9744
+ExRNA,DOID:9744 Type 1 diabetes mellitus,Immune system disease,Type 1 diabetes mellitus,DOID:9744
+ExRNA,DOID:9744 Type 1 diabetes mellitus,Genetic disease,Type 1 diabetes mellitus,DOID:9744
+ExRNA,DOID:162 Cancer,Cancer,Cancer,DOID:162
+GlyGen,*SCTID:102499006 Healthy,Healthy,Healthy,*SCTID:102499006
+GTEx,*SCTID:102499006 Healthy,Healthy,Healthy,*SCTID:102499006
+HMP,DOID:9970 Obesity,Metabolic disease,Obesity,DOID:9970
+HMP,DOID:5295 Intestinal disease,Gastrointestinal system disease,Intestinal disease,DOID:5295
+HMP,DOID:8778 Crohn's disease,Gastrointestinal system disease,Crohn's disease,DOID:8778
+HuBMAP,*SCTID:102499006 Healthy,Healthy,Healthy,*SCTID:102499006
+IDG,DOID:10283 Prostate cancer,Cancer,Prostate cancer,DOID:10283
+IDG,DOID:1037  Chronic lymphocytic leukemia,Hematopoietic system disease ,Chronic lymphocytic leukemia,DOID:1037 
+IDG,DOID:10534 Stomach cancer,Cancer,Stomach cancer,DOID:10534
+IDG,DOID:10584  Retinitis pigmentosa,Eye disease,Retinitis pigmentosa,DOID:10584 
+IDG,DOID:10652 Alzheimer's disease,Neurodegenerative disease ,Alzheimer's disease,DOID:10652
+IDG,DOID:10763 Hypertension,Cardiovascular system disease,Hypertension,DOID:10763
+IDG,DOID:318 Progressive muscular atrophy,Neurodegenerative disease ,Progressive muscular atrophy,DOID:318
+IDG,DOID:331 Central nervous system disease,Central nervous system disease,Central nervous system disease,DOID:331
+IDG,DOID:4159 Skin cancer,Cancer,Skin cancer,DOID:4159
+IDG,DOID:0050671 Breast cancer,Cancer,Breast cancer,DOID:0050671
+IDG,DOID:3571   Liver Cancer,Cancer,Liver Cancer,DOID:3571  
+KidsFirst+,DOID:1682 Congenital heart disease,Cardiovascular system disease,Congenital heart disease,DOID:1682
+KidsFirst+,DOID:7757 Childhood leukemia,Hematopoietic system disease ,Childhood leukemia,DOID:7757
+KidsFirst+,DOID:0050545  Visceral heterotaxy,Physical disorder,Visceral heterotaxy,DOID:0050545 
+KOMP2,DOID:630 Genetic disease,Genetic disease,Genetic disease,DOID:630
+LINCS,DOID:10283 Prostate cancer,Cancer,Prostate cancer,DOID:10286
+LINCS,DOID:219 Colon cancer,Cancer,Colon cancer,DOID:219
+LINCS,DOID:1240 Leukemia,Hematopoietic system disease ,Leukemia,DOID:1240
+Metabolomics,DOID:9970 Obesity,Metabolic disease,Obesity,DOID:9970
+Metabolomics,DOID:0050476 Barth syndrome,Metabolic disease,Barth syndrome,DOID:0050476
+Metabolomics,DOID:0050476 Barth syndrome,Genetic disease,Barth syndrome,DOID:0050476
+Metabolomics,DOID:1936  Atherosclerosis,Cardiovascular system disease,Atherosclerosis,DOID: 1936
+Metabolomics,DOID:3083 COPD,Respiratory system disease,COPD,DOID:3083
+Metabolomics,DOID:2841 Asthma,Respiratory system disease,Asthma,DOID:2841
+Metabolomics,DOID:1485 Cystic fibrosis,Genetic disease,Cystic fibrosis,DOID:1485
+Metabolomics,DOID:0050847 Sleep apnea,Sleep disorder,Sleep apnea,DOID:0050847
+Metabolomics,DOID:1596 Depressive disorder,Mental health disorder ,Depressive disorder,DOID:1596
+Metabolomics,DOID:326 Ischemia,Cardiovascular system disease,Ischemia,DOID:326
+Metabolomics,DOID:784 Chronic kidney disease,Kidney disease,Chronic kidney disease,DOID:784
+Metabolomics,DOID:1324 Lung cancer,Cancer,Lung cancer,DOID:1324
+Metabolomics,DOID:9352 Type 2 diabetes mellitus,Metabolic disease,Type 2 diabetes mellitus,DOID:9352
+Metabolomics,DOID:9352 Type 2 diabetes mellitus,Genetic disease,Type 2 diabetes mellitus,DOID:9352
+Metabolomics,DOID:5844 Myocardial infarction,Cardiovascular system disease,Myocardial infarction,DOID:5844
+MoTrPAC,*SCTID:102499006 Healthy,Healthy,Healthy,*SCTID:102499006
+SenNet,*SCTID:248280005 Aging ,Aging,Aging ,*SCTID:248280005
+SPARC,DOID:10652 Alzheimer's disease,Neurodegenerative disease ,Alzheimer's disease,DOID:10652
+SPARC,DOID:14330 Parkinson's disease,Neurodegenerative disease ,Parkinson's disease,DOID:14330
+SPARC,DOID:2841 Asthma,Respiratory system disease,Asthma,DOID:2841
+SPARC,DOID:9744 Type 1 diabetes mellitus,Metabolic disease,Type 1 diabetes mellitus,DOID:9744
+SPARC,DOID:9744 Type 1 diabetes mellitus,Immune system disease,Type 1 diabetes mellitus,DOID:9744
+SPARC,DOID:9744 Type 1 diabetes mellitus,Genetic disease,Type 1 diabetes mellitus,DOID:9744
+SPARC,DOID: 9256 Colorectal cancer,Cancer,Colorectal cancer,DOID: 9256
+</script>
+
+        <script type="text/javascript">
+            const PLOT_ID = "cd5db974-d0ce-4009-b514-76faa8c620b1";
+            const COL = { prog: "program", disease: "disease and doid", domain: "disease domain" };
+            const PROGRAM_LABELS = {};
+
+            const statusEl = document.getElementById("data-status");
+            const notesEl = document.getElementById("data-notes");
+            function setStatus(text, isError) {
+                statusEl.textContent = text;
+                statusEl.className = isError ? "error" : "";
+            }
+            function setNotes(lines) {
+                notesEl.innerHTML = "";
+                lines.forEach(t => { const d = document.createElement("div"); d.textContent = t; notesEl.appendChild(d); });
+            }
+
+            function parseAndRender(csvText, sourceName) {
+                const parsed = Papa.parse(csvText.replace(/^﻿/, ""), {
+                    header: true,
+                    skipEmptyLines: "greedy",
+                    transformHeader: h => h.trim().toLowerCase(),
+                    transform: v => (v == null ? "" : String(v).trim())
+                });
+                if (parsed.errors.length) console.warn("CSV parse warnings:", parsed.errors);
+                const fields = parsed.meta.fields || [];
+                const required = [COL.prog, COL.disease, COL.domain];
+                const missing = required.filter(c => !fields.includes(c));
+                if (missing.length) {
+                    setStatus(`${sourceName}: missing column(s) ${missing.join(", ")}. Found: ${fields.join(", ")}`, true);
+                    return;
+                }
+                const notes = render(parsed.data);
+                setNotes(notes);
+                // setStatus(`Showing ${sourceName} (${parsed.data.length.toLocaleString()} rows)`, false);
+            }
+
+            const embeddedCsv = document.getElementById("embedded-csv").textContent.trim();
+            if (embeddedCsv) {
+                window.addEventListener("DOMContentLoaded", () => parseAndRender(embeddedCsv, "embedded data"));
+            } else {
+                setStatus("No CSV is embedded in this page. Paste the CSV text into the page source, between the script tags marked PASTE YOUR CSV HERE.", true);
+            }
+            const LAYOUT = [
+                { title: "16 CFDE Programs",      x: 0.005 },
+                { title: "Disease (DOID)",   x: 0.27 },
+                { title: "Phenotype",     x: 0.72 }
+            ];
+
+            function tidy(raw) {
+                return (raw || "").replace(/^[*\s]+/, "").replace(/\s+/g, " ").replace(/\b(DOID|SCTID):\s+/gi, (m, p) => p.toUpperCase() + ":").trim();
+            }
+            function splitDisease(text) {
+                const m = text.match(/^((?:DOID|SCTID):\d+)\s*(.*)$/i);
+                return m ? { id: m[1].toUpperCase(), name: m[2] } : { id: "", name: text };
+            }
+            function domainLabel(raw) {
+                const t = tidy(raw);
+                return t ? t.charAt(0).toUpperCase() + t.slice(1).toLowerCase() : "";
+            }
+
+            function render(data) {
+                const notes = [];
+                const programs = [];
+                const progSeen = new Set();
+                const diseases = new Map();   // key -> { label, progs:Set, domains:Set }
+                const domains = new Map();    // key -> { label, diseases:Set, progs:Set }
+                const progDisease = new Set();
+                const diseaseDomain = new Set();
+                const noId = [];
+
+                data.forEach(row => {
+                    const prog = row[COL.prog];
+                    const label = tidy(row[COL.disease]);
+                    if (!prog || !label) return;
+                    if (!progSeen.has(prog)) { progSeen.add(prog); programs.push(prog); }
+                    const parts = splitDisease(label);
+                    if (!parts.id) noId.push(`${prog}: ${label}`);
+                    const dKey = label.toLowerCase();
+                    if (!diseases.has(dKey)) diseases.set(dKey, { label, name: parts.name, id: parts.id, progs: new Set(), domains: new Set() });
+                    const dis = diseases.get(dKey);
+                    dis.progs.add(prog);
+                    progDisease.add(prog + "\u0001" + dKey);
+
+                    const domLabel = domainLabel(row[COL.domain]);
+                    if (domLabel) {
+                        const mKey = domLabel.toLowerCase();
+                        if (!domains.has(mKey)) domains.set(mKey, { label: domLabel, diseases: new Set(), progs: new Set() });
+                        domains.get(mKey).diseases.add(dKey);
+                        domains.get(mKey).progs.add(prog);
+                        dis.domains.add(domLabel);
+                        diseaseDomain.add(dKey + "\u0001" + mKey);
+                    }
+                });
+
+                // Data checks shown above the diagram
+                const byName = new Map();
+                diseases.forEach(d => {
+                    if (!d.id) return;
+                    const k = d.name.toLowerCase();
+                    if (!byName.has(k)) byName.set(k, []);
+                    byName.get(k).push(d.id);
+                });
+                byName.forEach((ids, k) => { if (ids.length > 1) notes.push(`Check data: "${k}" appears with different IDs (${ids.join(", ")}).`); });
+                if (noId.length) notes.push(`No DOID given for: ${noId.join("; ")}.`);
+
+                const az = (a, b) => a.localeCompare(b, undefined, { sensitivity: "base", numeric: true });
+                const rank = name => { const n = name.trim().toLowerCase(); return n === "healthy" ? 0 : n === "aging" ? 2 : 1; };
+                const diseaseList = [...diseases.entries()].map(([key, d]) => ({ key, ...d }))
+                    .sort((a, b) => rank(a.name) - rank(b.name) || az(a.name, b.name) || az(a.label, b.label));
+                const domainList = [...domains.entries()].map(([key, m]) => ({ key, ...m }))
+                    .sort((a, b) => rank(a.label) - rank(b.label) || az(a.label, b.label));
+
+                const yStart = 0.0125;
+                const baseInc = 0.5;
+                const span = Math.max(diseaseList.length, domainList.length, programs.length) * baseInc;
+                const cols = [
+                    { n: programs.length },
+                    { n: diseaseList.length },
+                    { n: domainList.length }
+                ];
+                const rawY = [];
+                cols.forEach(c => { const inc = c.n > 0 ? span / c.n : baseInc; for (let i = 0; i < c.n; i++) rawY.push(yStart + i * inc); });
+                const maxY = Math.max(...rawY);
+                const padding = 0.05;
+                const scale = (1 - 2 * padding) / maxY;
+
+                const nodeIndex = new Map();
+                const nodesArr = [];
+                let k = 0;
+                programs.forEach(p => { nodeIndex.set("p::" + p, nodesArr.length); nodesArr.push({ label: PROGRAM_LABELS[p] || p, x: LAYOUT[0].x, y: padding + rawY[k++] * scale,
+                    hover: `${PROGRAM_LABELS[p] || p}<br>${[...diseases.values()].filter(d => d.progs.has(p)).length} disease entries` }); });
+                diseaseList.forEach(d => { nodeIndex.set("d::" + d.key, nodesArr.length); nodesArr.push({ label: d.label, x: LAYOUT[1].x, y: padding + rawY[k++] * scale,
+                    hover: `${d.label}<br>Programs: ${[...d.progs].join(", ")}<br>Domain: ${[...d.domains].join(", ") || "none"}` }); });
+                domainList.forEach(m => { nodeIndex.set("m::" + m.key, nodesArr.length); nodesArr.push({ label: m.label, x: LAYOUT[2].x, y: padding + rawY[k++] * scale,
+                    hover: `${m.label}<br>${m.diseases.size} disease${m.diseases.size === 1 ? "" : "s"}<br>Programs: ${[...m.progs].join(", ")}` }); });
+
+                const links = [];
+                progDisease.forEach(e => { const [p, dk] = e.split("\u0001"); links.push([nodeIndex.get("p::" + p), nodeIndex.get("d::" + dk)]); });
+                diseaseDomain.forEach(e => { const [dk, mk] = e.split("\u0001"); links.push([nodeIndex.get("d::" + dk), nodeIndex.get("m::" + mk)]); });
+
+                const height = Math.max(1000, diseaseList.length * 38 + 200);
+                document.getElementById(PLOT_ID).style.height = height + "px";
+
+                const columnTitleOffset = -0.005;
+                const config = {
+                    responsive: true,
+                    toImageButtonOptions: { format: "svg", filename: "cfde_disease_sankey", height: 1500, width: 1500, scale: 1 }
+                };
+
+                window.PLOTLYENV = window.PLOTLYENV || {};
+                Plotly.react(
+                    PLOT_ID,
+                    [
+                        {
+                            link: {
+                                source: [0].concat(links.map(l => l[0] + 2)),
+                                target: [1].concat(links.map(l => l[1] + 2)),
+                                value: [0.0000001].concat(Array(links.length).fill(0.1))
+                            },
+                            node: {
+                                label: ["", ""].concat(nodesArr.map(n => n.label)),
+                                line: { color: "gray", width: 0.5 },
+                                pad: 50,
+                                thickness: 20,
+                                x: [0.99, 0.99].concat(nodesArr.map(n => n.x)),
+                                y: [99, 99].concat(nodesArr.map(n => n.y)),
+                                customdata: ["", ""].concat(nodesArr.map(n => n.hover)),
+                                hovertemplate: "%{customdata}<extra></extra>"
+                            },
+                            type: "sankey",
+                        },
+                    ],
+                    {
+                template: {
+                    data: {
+                        histogram2dcontour: [
+                            {
+                                type: "histogram2dcontour",
+                                colorbar: { outlinewidth: 0, ticks: "" },
+                                colorscale: [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"],
+                                ],
+                            },
+                        ],
+                        choropleth: [
+                            {
+                                type: "choropleth",
+                                colorbar: { outlinewidth: 0, ticks: "" },
+                            },
+                        ],
+                        histogram2d: [
+                            {
+                                type: "histogram2d",
+                                colorbar: { outlinewidth: 0, ticks: "" },
+                                colorscale: [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"],
+                                ],
+                            },
+                        ],
+                        heatmap: [
+                            {
+                                type: "heatmap",
+                                colorbar: { outlinewidth: 0, ticks: "" },
+                                colorscale: [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"],
+                                ],
+                            },
+                        ],
+                        heatmapgl: [
+                            {
+                                type: "heatmapgl",
+                                colorbar: { outlinewidth: 0, ticks: "" },
+                                colorscale: [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"],
+                                ],
+                            },
+                        ],
+                        contourcarpet: [
+                            {
+                                type: "contourcarpet",
+                                colorbar: { outlinewidth: 0, ticks: "" },
+                            },
+                        ],
+                        contour: [
+                            {
+                                type: "contour",
+                                colorbar: { outlinewidth: 0, ticks: "" },
+                                colorscale: [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"],
+                                ],
+                            },
+                        ],
+                        surface: [
+                            {
+                                type: "surface",
+                                colorbar: { outlinewidth: 0, ticks: "" },
+                                colorscale: [
+                                    [0.0, "#0d0887"],
+                                    [0.1111111111111111, "#46039f"],
+                                    [0.2222222222222222, "#7201a8"],
+                                    [0.3333333333333333, "#9c179e"],
+                                    [0.4444444444444444, "#bd3786"],
+                                    [0.5555555555555556, "#d8576b"],
+                                    [0.6666666666666666, "#ed7953"],
+                                    [0.7777777777777778, "#fb9f3a"],
+                                    [0.8888888888888888, "#fdca26"],
+                                    [1.0, "#f0f921"],
+                                ],
+                            },
+                        ],
+                        mesh3d: [
+                            {
+                                type: "mesh3d",
+                                colorbar: { outlinewidth: 0, ticks: "" },
+                            },
+                        ],
+                        scatter: [
+                            {
+                                fillpattern: {
+                                    fillmode: "overlay",
+                                    size: 10,
+                                    solidity: 0.2,
+                                },
+                                type: "scatter",
+                            },
+                        ],
+                        parcoords: [
+                            {
+                                type: "parcoords",
+                                line: { colorbar: { outlinewidth: 0, ticks: "" } },
+                            },
+                        ],
+                        scatterpolargl: [
+                            {
+                                type: "scatterpolargl",
+                                marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                            },
+                        ],
+                        bar: [
+                            {
+                                error_x: { color: "#2a3f5f" },
+                                error_y: { color: "#2a3f5f" },
+                                marker: {
+                                    line: { color: "#E5ECF6", width: 0.5 },
+                                    pattern: {
+                                        fillmode: "overlay",
+                                        size: 10,
+                                        solidity: 0.2,
+                                    },
+                                },
+                                type: "bar",
+                            },
+                        ],
+                        scattergeo: [
+                            {
+                                type: "scattergeo",
+                                marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                            },
+                        ],
+                        scatterpolar: [
+                            {
+                                type: "scatterpolar",
+                                marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                            },
+                        ],
+                        histogram: [
+                            {
+                                marker: {
+                                    pattern: {
+                                        fillmode: "overlay",
+                                        size: 10,
+                                        solidity: 0.2,
+                                    },
+                                },
+                                type: "histogram",
+                            },
+                        ],
+                        scattergl: [
+                            {
+                                type: "scattergl",
+                                marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                            },
+                        ],
+                        scatter3d: [
+                            {
+                                type: "scatter3d",
+                                line: { colorbar: { outlinewidth: 0, ticks: "" } },
+                                marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                            },
+                        ],
+                        scattermapbox: [
+                            {
+                                type: "scattermapbox",
+                                marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                            },
+                        ],
+                        scatterternary: [
+                            {
+                                type: "scatterternary",
+                                marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                            },
+                        ],
+                        scattercarpet: [
+                            {
+                                type: "scattercarpet",
+                                marker: { colorbar: { outlinewidth: 0, ticks: "" } },
+                            },
+                        ],
+                        carpet: [
+                            {
+                                aaxis: {
+                                    endlinecolor: "#2a3f5f",
+                                    gridcolor: "white",
+                                    linecolor: "white",
+                                    minorgridcolor: "white",
+                                    startlinecolor: "#2a3f5f",
+                                },
+                                baxis: {
+                                    endlinecolor: "#2a3f5f",
+                                    gridcolor: "white",
+                                    linecolor: "white",
+                                    minorgridcolor: "white",
+                                    startlinecolor: "#2a3f5f",
+                                },
+                                type: "carpet",
+                            },
+                        ],
+                        table: [
+                            {
+                                cells: {
+                                    fill: { color: "#EBF0F8" },
+                                    line: { color: "white" },
+                                },
+                                header: {
+                                    fill: { color: "#C8D4E3" },
+                                    line: { color: "white" },
+                                },
+                                type: "table",
+                            },
+                        ],
+                        barpolar: [
+                            {
+                                marker: {
+                                    line: { color: "#E5ECF6", width: 0.5 },
+                                    pattern: {
+                                        fillmode: "overlay",
+                                        size: 10,
+                                        solidity: 0.2,
+                                    },
+                                },
+                                type: "barpolar",
+                            },
+                        ],
+                        pie: [{ automargin: true, type: "pie" }],
+                    },
+                    layout: {
+                        autotypenumbers: "strict",
+                        colorway: [
+                            "#636efa",
+                            "#EF553B",
+                            "#00cc96",
+                            "#ab63fa",
+                            "#FFA15A",
+                            "#19d3f3",
+                            "#FF6692",
+                            "#B6E880",
+                            "#FF97FF",
+                            "#FECB52",
+                        ],
+                        font: { color: "#2a3f5f" },
+                        hovermode: "closest",
+                        hoverlabel: { align: "left" },
+                        paper_bgcolor: "white",
+                        plot_bgcolor: "#E5ECF6",
+                        polar: {
+                            bgcolor: "#E5ECF6",
+                            angularaxis: {
+                                gridcolor: "white",
+                                linecolor: "white",
+                                ticks: "",
+                            },
+                            radialaxis: {
+                                gridcolor: "white",
+                                linecolor: "white",
+                                ticks: "",
+                            },
+                        },
+                        ternary: {
+                            bgcolor: "#E5ECF6",
+                            aaxis: {
+                                gridcolor: "white",
+                                linecolor: "white",
+                                ticks: "",
+                            },
+                            baxis: {
+                                gridcolor: "white",
+                                linecolor: "white",
+                                ticks: "",
+                            },
+                            caxis: {
+                                gridcolor: "white",
+                                linecolor: "white",
+                                ticks: "",
+                            },
+                        },
+                        coloraxis: { colorbar: { outlinewidth: 0, ticks: "" } },
+                        colorscale: {
+                            sequential: [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"],
+                            ],
+                            sequentialminus: [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"],
+                            ],
+                            diverging: [
+                                [0, "#8e0152"],
+                                [0.1, "#c51b7d"],
+                                [0.2, "#de77ae"],
+                                [0.3, "#f1b6da"],
+                                [0.4, "#fde0ef"],
+                                [0.5, "#f7f7f7"],
+                                [0.6, "#e6f5d0"],
+                                [0.7, "#b8e186"],
+                                [0.8, "#7fbc41"],
+                                [0.9, "#4d9221"],
+                                [1, "#276419"],
+                            ],
+                        },
+                        xaxis: {
+                            gridcolor: "white",
+                            linecolor: "white",
+                            ticks: "",
+                            title: { standoff: 15 },
+                            zerolinecolor: "white",
+                            automargin: true,
+                            zerolinewidth: 2,
+                        },
+                        yaxis: {
+                            gridcolor: "white",
+                            linecolor: "white",
+                            ticks: "",
+                            title: { standoff: 15 },
+                            zerolinecolor: "white",
+                            automargin: true,
+                            zerolinewidth: 2,
+                        },
+                        scene: {
+                            xaxis: {
+                                backgroundcolor: "#E5ECF6",
+                                gridcolor: "white",
+                                linecolor: "white",
+                                showbackground: true,
+                                ticks: "",
+                                zerolinecolor: "white",
+                                gridwidth: 2,
+                            },
+                            yaxis: {
+                                backgroundcolor: "#E5ECF6",
+                                gridcolor: "white",
+                                linecolor: "white",
+                                showbackground: true,
+                                ticks: "",
+                                zerolinecolor: "white",
+                                gridwidth: 2,
+                            },
+                            zaxis: {
+                                backgroundcolor: "#E5ECF6",
+                                gridcolor: "white",
+                                linecolor: "white",
+                                showbackground: true,
+                                ticks: "",
+                                zerolinecolor: "white",
+                                gridwidth: 2,
+                            },
+                        },
+                        shapedefaults: { line: { color: "#2a3f5f" } },
+                        annotationdefaults: {
+                            arrowcolor: "#2a3f5f",
+                            arrowhead: 0,
+                            arrowwidth: 1,
+                        },
+                        geo: {
+                            bgcolor: "white",
+                            landcolor: "#E5ECF6",
+                            subunitcolor: "white",
+                            showland: true,
+                            showlakes: true,
+                            lakecolor: "white",
+                        },
+                        title: { x: 0.05 },
+                        mapbox: { style: "light" },
+                    },
+                },                        title: {
+                            text: "<b>CFDE Program Datasets and Their Human Disease Ontology</b>",
+                            x: 0.5,
+                            y: 0.98,
+                            xanchor: "center",
+                            yanchor: "top",
+                            font: { size: 22, color: "#2a3f5f" }
+                        },
+                        font: { size: 14 },
+                        annotations: LAYOUT.map(col => ({
+                            text: `<b>${col.title}</b>`,
+                            x: Math.min(1, Math.max(0, col.x + columnTitleOffset)),
+                            y: 0.99,
+                            xref: "paper",
+                            yref: "paper",
+                            showarrow: false,
+                            font: { size: 14, color: "#2a3f5f" },
+                            xanchor: "left"
+                        })),
+                    },
+                    config,
+                );
+                return notes;
+            }
+        </script>
+    </div>
+</body>
+
+</html>
