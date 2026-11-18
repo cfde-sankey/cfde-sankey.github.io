@@ -106,12 +106,21 @@ SPARC,DOID:9744 Type 1 diabetes mellitus,Metabolic disease,Type 1 diabetes melli
 SPARC,DOID:9744 Type 1 diabetes mellitus,Immune system disease,Type 1 diabetes mellitus,DOID:9744
 SPARC,DOID:9744 Type 1 diabetes mellitus,Genetic disease,Type 1 diabetes mellitus,DOID:9744
 SPARC,DOID: 9256 Colorectal cancer,Cancer,Colorectal cancer,DOID: 9256
+SMaHT,*SCTID:102499006 Healthy,Healthy,Healthy,*SCTID:102499006
+SMaHT,*SCTID:248280005 Aging,Aging,Aging,*SCTID:248280005
+NPH,*SCTID:102499006 Healthy,Healthy,Healthy,*SCTID:102499006
+SCGE,DOID:630 Genetic disease,Genetic disease,Genetic disease,DOID:630
 </script>
 
         <script type="text/javascript">
             const PLOT_ID = "cd5db974-d0ce-4009-b514-76faa8c620b1";
             const COL = { prog: "program", disease: "disease and doid", domain: "disease domain" };
             const PROGRAM_LABELS = {};
+            const PROGRAM_NOTES = {
+                SMaHT: "Primarily a reference map of non-diseased tissues; Aging is included because age-associated somatic mosaicism is part of its interpretive scope.",
+                NPH: "Health- and prevention-oriented precision-nutrition study; it is not assigned to one disease-specific cohort.",
+                SCGE: "Therapeutic genome-editing program spanning many rare genetic indications; shown at the broad Genetic disease level."
+            };
 
             const statusEl = document.getElementById("data-status");
             const notesEl = document.getElementById("data-notes");
@@ -151,7 +160,7 @@ SPARC,DOID: 9256 Colorectal cancer,Cancer,Colorectal cancer,DOID: 9256
                 setStatus("No CSV is embedded in this page. Paste the CSV text into the page source, between the script tags marked PASTE YOUR CSV HERE.", true);
             }
             const LAYOUT = [
-                { title: "16 CFDE Programs",      x: 0.005 },
+                { title: "19 CFDE Programs",      x: 0.005 },
                 { title: "Disease (DOID)",   x: 0.27 },
                 { title: "Phenotype",     x: 0.72 }
             ];
@@ -169,7 +178,9 @@ SPARC,DOID: 9256 Colorectal cancer,Cancer,Colorectal cancer,DOID: 9256
             }
 
             function render(data) {
-                const notes = [];
+                const notes = [
+                    "Interpretive mapping: SMaHT is primarily Healthy with an Aging context; NPH is primarily Healthy; SCGE is represented as Genetic disease because it spans many rare genetic indications. These are program-level orientations, not diagnoses for every participant or sample."
+                ];
                 const programs = [];
                 const progSeen = new Set();
                 const diseases = new Map();   // key -> { label, progs:Set, domains:Set }
@@ -238,7 +249,7 @@ SPARC,DOID: 9256 Colorectal cancer,Cancer,Colorectal cancer,DOID: 9256
                 const nodesArr = [];
                 let k = 0;
                 programs.forEach(p => { nodeIndex.set("p::" + p, nodesArr.length); nodesArr.push({ label: PROGRAM_LABELS[p] || p, x: LAYOUT[0].x, y: padding + rawY[k++] * scale,
-                    hover: `${PROGRAM_LABELS[p] || p}<br>${[...diseases.values()].filter(d => d.progs.has(p)).length} disease entries` }); });
+                    hover: `${PROGRAM_LABELS[p] || p}<br>${[...diseases.values()].filter(d => d.progs.has(p)).length} disease entries${PROGRAM_NOTES[p] ? `<br>${PROGRAM_NOTES[p]}` : ""}` }); });
                 diseaseList.forEach(d => { nodeIndex.set("d::" + d.key, nodesArr.length); nodesArr.push({ label: d.label, x: LAYOUT[1].x, y: padding + rawY[k++] * scale,
                     hover: `${d.label}<br>Programs: ${[...d.progs].join(", ")}<br>Domain: ${[...d.domains].join(", ") || "none"}` }); });
                 domainList.forEach(m => { nodeIndex.set("m::" + m.key, nodesArr.length); nodesArr.push({ label: m.label, x: LAYOUT[2].x, y: padding + rawY[k++] * scale,
