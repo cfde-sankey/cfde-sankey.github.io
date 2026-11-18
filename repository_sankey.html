@@ -3139,6 +3139,47 @@ NPH,data:3669 Learning material,Other,Generalist repositories
             // Extra gap after this node in its column (kept from the original layout)
             const GAP_AFTER = { [COL.repo]: 'Generalist repositories' };
 
+            const GENERALIST_REPOS = [
+                ["Zenodo",    "https://zenodo.org"],
+                ["Dryad",     "https://datadryad.org/stash"],
+                ["Figshare",  "https://figshare.com"],
+                ["dataverse", "https://dataverse.org"],
+                ["Mendeley",  "https://data.mendeley.com"],
+                ["OSF",       "https://osf.io"],
+                ["Synapse",   "https://www.synapse.org"],
+                ["Vivli",     "https://vivli.org"]
+            ];
+            const REPO_TABLE = { x0: 0.57, xSplit: 0.67, x1: 0.95, yTop: 0.25, rowH: 0.018, pad: 0.008 };
+
+            function generalistTable() {
+                const t = REPO_TABLE;
+                const yBottom = t.yTop - (GENERALIST_REPOS.length + 1) * t.rowH;
+                const paper = { xref: "paper", yref: "paper" };
+                const rule = (x0, y0, x1, y1) => ({ ...paper, type: "line", x0, y0, x1, y1, line: { color: "#999", width: 1 } });
+                const cell = (text, x, y) => ({
+                    ...paper, text, x, y, xanchor: "left", yanchor: "middle", showarrow: false,
+                    font: { size: 14, color: "#2a3f5f" }
+                });
+
+                const shapes = [
+                    { ...paper, type: "rect", x0: t.x0, x1: t.x1, y0: t.yTop - t.rowH, y1: t.yTop, fillcolor: "#e5e5e5", line: { width: 0 } },
+                    { ...paper, type: "rect", x0: t.x0, x1: t.x1, y0: yBottom, y1: t.yTop, line: { color: "#555", width: 1 } },
+                    rule(t.xSplit, yBottom, t.xSplit, t.yTop - t.rowH)
+                ];
+                GENERALIST_REPOS.forEach((_, i) => {
+                    const y = t.yTop - (i + 1) * t.rowH;
+                    shapes.push(rule(t.x0, y, t.x1, y));
+                });
+
+                const annotations = [cell("<b>Generalist Repositories</b>", t.x0 + t.pad, t.yTop - t.rowH / 2)];
+                GENERALIST_REPOS.forEach(([name, url], i) => {
+                    const y = t.yTop - (i + 1.5) * t.rowH;
+                    annotations.push(cell(`<b>${name}</b>`, t.x0 + t.pad, y));
+                    annotations.push(cell(`<a href="${url}" target="_blank" style="color:#1f6fd1">${url}</a>`, t.xSplit + t.pad, y));
+                });
+                return { shapes, annotations };
+            }
+
             const statusEl = document.getElementById("data-status");
             function setStatus(text, isError) {
                 statusEl.textContent = text;
@@ -3233,7 +3274,24 @@ NPH,data:3669 Learning material,Other,Generalist repositories
                 });
                 if (missingLinks.length) console.warn("Sankey skipped rows due to missing nodes:", missingLinks);
 
+                const heading = text => `<b><span style="text-decoration:underline">${text}</span></b>`;
+                const sectionHeadings = [];
+                const generalistName = GAP_AFTER[COL.repo];
+                const generalist = nodes[nodeId(COL.repo, generalistName)];
+                if (generalist) {
+                    generalist.label = heading("Generalist Repositories");
+                    const repoOrder = order[activeKeys.indexOf(COL.repo)];
+                    const firstDomain = nodes[nodeId(COL.repo, repoOrder[repoOrder.indexOf(generalistName) + 1])];
+                    if (firstDomain) sectionHeadings.push({
+                        text: heading("Domain-Specific Repositories"),
+                        x: firstDomain.x, xshift: 11, y: 1 - (generalist.y + firstDomain.y) / 2,
+                        xref: "paper", yref: "paper", xanchor: "left", yanchor: "middle",
+                        showarrow: false, font: { size: 14, color: "#2a3f5f" }
+                    });
+                }
+
                 const nodesArr = Object.values(nodes).sort((a, b) => a.index - b.index);
+                const repoTable = generalistTable();
 
                 window.PLOTLYENV = window.PLOTLYENV || {};
                 const config = {
@@ -3707,7 +3765,8 @@ NPH,data:3669 Learning material,Other,Generalist repositories
                             showarrow: false,
                             font: { size: 14, color: "#2a3f5f" },
                             xanchor: "left"
-                        })),
+                        })).concat(sectionHeadings, repoTable.annotations),
+                        shapes: repoTable.shapes,
                     },
                     config,
                 );
